@@ -1,0 +1,55 @@
+
+\title{Erik's thoughts}
+\author{
+        Erik Waingarten
+}
+\date{\today}
+
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+
+\begin{document}
+\maketitle
+
+\section{Question 1}
+
+I argue that there are no rational functions with period 2. This is a simple argument.
+
+Suppose there was a function $f$ of one variable such that $F(x,y) = \dfrac{f(y)}{x}$ had periodicity 2, then $a_0 = a_2 = x$, $a_1 = y$ and
+\[ a_2 = x = \dfrac{f(x)}{y} \]
+And so $f(x) = xy$, for every $y$, so $f$ is not a function of one variable. 
+
+\section{Some periodic functions}
+
+If you have $F(x,y) = \dfrac{1}{x}$, then this is periodic with period $4$. In particular, the sequence looks like:
+\[ x, y, \dfrac{1}{x}, \dfrac{1}{y}, x, y, ... \]
+An obvious observation is that if $F(x,y) = f(x)$, then $F(x,y)$ is the interlacing of two sequences where sequences start with $x$ and $y$ and one sequence is $a_i = f^{i}(x)$ and $b_i = f^{i}(y)$, and the sequence is $x,y,a_1, b_1, a_2, b_2, ...$.
+
+So if $x = f^{l}(x)$, then the sequence is periodic with period $n = 2l$. If $F(x,y) = f(y)$, then the sequence is not periodic. This is because if $x = a_0 = a_n$ and $a_1 = a_{n+1} = y$, then $f(x) = y$, but this should be true of all $x$, and so $f$ is a constant function. But then it needs to be true for all $y$, which is a contradiction. 
+
+Examples of functions and their periods:
+\begin{itemize}
+\item $F(x, y) = \dfrac{1}{x}$ with period $4$ as shown above.
+\item $F(x,y) = \dfrac{c}{x}$ with period $4$. Very similar.
+\item $F(x,y) = \dfrac{1}{xy}$ with period $3$.
+\item $F(x,y) = \dfrac{y}{x}$ with period $6$.
+\item $F(x,y) = x$, with period $2$. 
+\end{itemize}
+
+\section{Question 2}
+
+I'm not sure, but I think its the constant polynomials. Suppose we had a polynomial $f(y) = \sum c_iy^i$ with $c_n > 0$, such that $F(x,y) = \dfrac{f(y)}{x}$ has periodicity $4$, then we have sequence (in the complex sequences, we look at the highest order terms).
+\[ a_0 = x, a_1 = y \]
+\[ a_2 = \dfrac{\sum_i c_i y^i}{x} = C_2\frac{y^n}{x} + ... \]
+\[ a_3 = C_3 \frac{y^{n^2-n}}{x^{n-1}} + ...\]
+\[ a_4 = C_4 \dfrac{x*y^{n^3-n^2-n}}{x^{n^2 - n}} + ...\]
+So $n^2 - n$ must be 0, which means that $n = 1$ or $n=0$, and $n^3 - n^2 - n$ must be 0, but this is not the case for $n = 1$. So $n=0$. 
+
+We can probably employ similar strategies for rational functions.
+\section{``Raw'' Idea}
+
+So imagine you have a 3D space, with axis $x,y,z$. And in the space, graph $z = F(x,y)$, $x = F(y,z)$ and $y = F(z,x)$. Then on inputs $a_0 = x$ and $a_1 = y$, then look at the point $(x,y, F(x,y))$. This lies on the surface of $z = F(x,y)$, and the next step is to move that point in the $x$ direction until it intersects the surface defined by $x = F(y,z)$, then we move along the $y$ direction until you intersect surface $y = F(z,x)$, and continue...
+
+Maybe we can characterize the shape of the space? Idk... I prefaced it with the Raw Idea, so I don't feel bad for making you read this jaja. 
+
+\end{document}
