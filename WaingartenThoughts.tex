@@ -33,6 +33,7 @@ Examples of functions and their periods:
 \item $F(x,y) = \dfrac{c}{x}$ with period $4$. Very similar.
 \item $F(x,y) = \dfrac{1}{xy}$ with period $3$.
 \item $F(x,y) = \dfrac{y}{x}$ with period $6$.
+\item $F(x,y) = \dfrac{cy}{x}$ with period $6$. 
 \item $F(x,y) = x$, with period $2$. 
 \end{itemize}
 
@@ -46,6 +47,35 @@ I'm not sure, but I think its the constant polynomials. Suppose we had a polynom
 So $n^2 - n$ must be 0, which means that $n = 1$ or $n=0$, and $n^3 - n^2 - n$ must be 0, but this is not the case for $n = 1$. So $n=0$. 
 
 We can probably employ similar strategies for rational functions.
+
+\section{Something}
+
+I can show that if $F(x,y) = \dfrac{f(y)}{x}$, where $f$ is degree greater than or equal to 2, then it will not be periodic. 
+
+Suppose $f$ is degree $n$, then by looking at the highest degree terms we can let $y_i$ be the highest degree on the $y$ term of the expression. Then
+\[ y_{i+1} = ny_{i} - y_{i-1} \]
+\[ y_0 = 0, y_1 = 1 \]
+So we can show by induction that $y_{i+1} > y_i$, and so the degree of $y$ never goes to 0 (in order for the formula to evaluate to $x$. Its clear for $i = 0$. Suppose it works for some $i$, then 
+\[ y_{i+2} = y_{i+1} + (y_{i+1} - y_{i}) \]
+\[ y_{i+2} > y_{i+1} \]
+following the inductive hypothesis.
+
+Likewise, if $f(y) = \dfrac{P(y)}{Q(y)}$, where $P$ and $Q$ are polynomials of degree $p$ and $q$, then
+\[ y_{i+1} = (p-q)y_{i} - y_{i-1} \]
+So if $p - q \geq 2$, then the function is not periodic.
+
+I also came up with a closed form formula for the highest degree of $y$ at the $i$th iteration by a generating function. 
+So first, 
+\[ Y(x) = \sum y_ix^i = \dfrac{x}{x^2 - nx + 1} \]
+And so we can let $a = \dfrac{n + \sqrt{n^2 - 4}}{2}, b = \dfrac{n - \sqrt{n^2-4}}{2}$, and so 
+\[ y_i = \dfrac{a}{a^2 - 1}(a^i - b^i) \]
+
+Also, one can ask which periodicty can a function have. Suppose $F(x,y) = f(y)/x$ where $f$ is a polynomial of degree $1$, since degree $0$ we already solved it. Then if we look at the patterns of highest degree terms in $y$, and we have 
+\[ y_{i+1} = y_i - y_{i-1} \]
+We know that if the function is periodic, then at some $p$, $y_p = 0$ and $y_{p+1} = 1$. This means that $y_{p-1} = -1, y_{p-2} = -1$, then again, $y_{p-3} = 0$. Therefore, we know that in the least, $p$ must be a multiple of $3$. In addition, since we have a change in parity, then we know that $p$ must be a multiple of $6$. In fact, we get $f(y) = y$ gets a periodicity of $6$. 
+
+Similarly, if $f(y)$ has highest degree of $y$ with $-1$, then if the function is periodic with periodicity $p$, then $y_p = 0$ and $y_{p+1} = 1$, and so $y_{p-1} = -1$, $y_{p-2} = 1$ and $y_{p-3} = 0$. And so the periodicity must be a multiple of $3$. 
+
 \section{``Raw'' Idea}
 
 So imagine you have a 3D space, with axis $x,y,z$. And in the space, graph $z = F(x,y)$, $x = F(y,z)$ and $y = F(z,x)$. Then on inputs $a_0 = x$ and $a_1 = y$, then look at the point $(x,y, F(x,y))$. This lies on the surface of $z = F(x,y)$, and the next step is to move that point in the $x$ direction until it intersects the surface defined by $x = F(y,z)$, then we move along the $y$ direction until you intersect surface $y = F(z,x)$, and continue...
