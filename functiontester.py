@@ -1,7 +1,7 @@
 def buildseq(az, ao, function, n):
     az = az +0.0
     ao=ao+0.0
-    output=[ao,az]
+    output=[az,ao]
     for i in range(n):
         add = function(ao)/az
         output.append(add)
