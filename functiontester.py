@@ -35,6 +35,12 @@ def plusz(x):
     return x+.5
 def line(x):
     return 3*x+1
-b= buildseq(1,1,plustwo,400)
+def one(x):
+    return 1
+def identity(x):
+    return x
+def reciprocal(x):
+    return 1/x
+b= buildseq(4,3,minusone,40000)
 #print b
 print periodic(b)
