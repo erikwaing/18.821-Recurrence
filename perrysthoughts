@@ -1,0 +1,46 @@
+\title{Perry's Thoughts}
+\date{}
+
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\begin{document}
+\maketitle
+\section{How to Deal with 0}
+In order for our rules to be complete we must have some method for dealing with $0$. In order to handle this we will include an inverse for $0$ which we will write as $0^{-1}$. So we have 
+\begin{align*}
+0*0^{-1} =1
+\end{align*}
+We will treat $0^{-1}$ as an variable, that is related to the reals only by the above relation. We are essentially ignoring $0$ and/or when working with our equations we are assuming that the denominator is never $0$.
+
+\section{Question 4} 
+I hypothesize that $f(y) = by+c, b \neq 0$ is periodic for $c = 1, b=1$ with period 5, and is not periodic when $c \neq 0,1$ or when $b \neq 1$. That is the only linear polynomials which are periodic are $y+1$ and $by$ for $ b \neq 0$. 
+\begin{proof}
+If $c=1$ suppose we have $a_0 =x, a_1 =y$, we want to show that $a_5=a_0$ and $a_6=a_1$. Well 
+\begin{equation*}
+a_2 = \frac{f(a_1)}{a_0} = \frac{ a_1 +1}{a_0} = \frac{y+1}{x},
+\end{equation*}
+and so 
+\begin{equation*}
+a_3 = \frac{a_2+1}{a_1} = \frac{ \frac{y+1}{x} +1}{y} = \frac{x+y+1}{xy},
+\end{equation*}
+so
+\begin{equation*}
+a_4 = \frac{a_3 +1}{a_2} = \frac{ \frac{y+1+x}{xy} +1}{\frac{y+1}{x}} = \frac{x+y+1+xy}{y(y+1)},
+\end{equation*}
+giving us 
+\begin{align*}
+a_5 &=\frac{a_4+1}{a_3} = \left(\frac{x+y+1+xy}{y(y+1)} +1\right)\left( \frac{xy}{x+y+1} \right)= \frac{ x(x+y+1) + xxy + xy(y+1)}{(y+1)(x+y+1)} \\
+&= \frac{x^2(y+1) + x(y+1) + xy(y+1)}{(y+1)(x+y+1)} = \frac{x(x+y+1)}{x+y+1} = x = a_0.
+\end{align*}
+So finally we calculate $a_6$ and find 
+\begin{align*}
+a_6 = \frac{a_5 +1}{a_4} = (x+1)\left( \frac{y(y+1)}{x+y+1+xy} \right) = \frac{xy^2 + xy+y^2+y}{x+y+1+xy} =y =a_1
+\end{align*}
+Therefore $f(y)=y+1$ is periodic with period 5 as desired. 
+\end{proof}
+By numerical simulation we have checked that if $f(y) = y+2$ or $f(y)=y-1$ are periodic they have period longer than 40,000. 
+
+
+\end{document}
