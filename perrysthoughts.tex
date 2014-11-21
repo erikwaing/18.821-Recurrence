@@ -42,5 +42,78 @@ Therefore $f(y)=y+1$ is periodic with period 5 as desired.
 \end{proof}
 By numerical simulation we have checked that if $f(y) = y+2$ or $f(y)=y-1$ are periodic they have period longer than 40,000. 
 
+\section{Linear Rational Functions}
+In this section we consider $F(x,y)$ of the form
+\begin{equation}
+\label{rationallinear}
+F(x,y) = \frac{b_1 x+b_2 y + b_3}{c_1 x + c_2 y+ c_3},
+\end{equation}
+and ask the questions given $n$ for what choice of $b_i$ and $c_i$ will we produce a function with a period $n$ and for what $n$'s can we do this?
 
+\begin{proposition} 
+If $F(x,y)$ is of the form in \ref{rationallinear} and the recurrence relation it produces has period $3$ then $F$ is one of three functions. In particular we can have 
+\begin{align*}
+F(x,y) &= -x-y \\
+F(x,y) &= \left( \frac{1}{2} +\frac{i\sqrt{3}}{2} \right) x + \left( \frac{1}{2} -\frac{i\sqrt{3}}{2} \right) y \\
+F(x,y) &= \left( \frac{1}{2} -\frac{i\sqrt{3}}{2} \right) x + \left( \frac{1}{2} +\frac{i\sqrt{3}}{2} \right) y
+\end{align*}
+\end{proposition}
+\begin{proof}
+In order for $F(x,y)$ to induce a recurrence relation with period $3$ we must have
+\begin{equation*}
+\left( (c_1 x + c_2 y +c_3) c_1 y + c_2 (b_1 x + b_2 y + b_3) + c_3(c_1 x + c_2 y +c_3) \right) x = (c_1 x + c_2 y + c_3) b_1 y + b_2(b_1 x + b_2 y + b_3) + b_3 (c_1 x = c_2 y + c_3),
+\end{equation*}
+which we obtain from writing down $a_3=a_0$ in terms of $x$ and $y$ and clearing denominators. If we multiply this expression out we get 
+\begin{equation*}
+c_1^2 x^2 y + c_2 c_1 y^2 x + (c_3 c_1 + c_2 b_2 + c_3 c_2)xy + (c_2b_1 + c_3 c_1) x^2 + (b_3 + c_3)x = c_1 b_1 xy + c_2 b_1 y^2 + c_3 b_1 y + (b_2 b_1 + b_3 c_1)x + (b_2^2 +b_3 c_2)y + b_2 b_3 + b_3 c_3.
+\end{equation*}
+Because this relation must hold for arbitrary $x$ and $y$ we know that terms with the same exponents for $x$ and $y$ must cancel. So for instance we must have 
+\begin{equation*}
+c_1^2 x^2 y = 0, 
+\end{equation*}
+and so we must have $c_1=0$. We can do this for terms of each order and find the following 5 relations for the coefficients 
+\begin{align}
+\label{fiverelations}
+c_2(b_2 + c_3) =0 \\
+c_2 b_1 = 0 \\
+b_3 + c_3 = b_2 b_1 \\
+c_3 b_1 + b_2^2 + b_3 c_2 =0 \\
+b_3(b_2 + c_3) = 0. 
+\end{align}
+Suppose that $c_2 =0$, then $F$ is of the form 
+\begin{equation*}
+F(x,y) = \frac{ b_1 x + b_2 y + b_3}{c_3}.
+\end{equation*}
+Therefore we must have 
+\begin{equation*}
+c_3^2 x = b_1 c_3 y + b_2 (b_1 x + b_2 y + b_3) + b_3,
+\end{equation*}
+which gives us a new family of relations 
+\begin{align*}
+b_2 b_1 = c_3^2 \\
+c_3 b_1 + b_2^2 =0.
+\end{align*}
+Combining these two gives us 
+\begin{equation*}
+c_3^3 + b_2^3 = 0, 
+\end{equation*}
+which has three solutions $c_3 = -b_2$ and $c_3 = \frac{1}{2} ( b_2 \pm i\sqrt{3}b_2)$. Note that $c_3 = -b_2$ implies that we must have $b_1=b_2$ which gives us $F(x,y) = -x -y$. It is easy to check that this is in fact periodic with period 3. On the other hand $c_3 = \frac{1}{2} ( b_2 \pm i\sqrt{3}b_2)$ implies that $b_1 = \frac{1}{2} ( -b_2 \pm i\sqrt{3}b_2)$, which gives us 
+\begin{align*}
+F(x,y) &= \left( \frac{1}{2} -\frac{i\sqrt{3}}{2} \right) x + \left( \frac{1}{2} +\frac{i\sqrt{3}}{2} \right) y \\
+F(x,y) &= \left( \frac{1}{2} +\frac{i\sqrt{3}}{2} \right) x + \left( \frac{1}{2} -\frac{i\sqrt{3}}{2} \right) y.
+\end{align*}
+This exhausts the possibilities when $c_2=0$ so let us asssume otherwise. Then based on the relations \ref{fiverelations} we must have 
+\begin{equation*}
+b_1 = 0,
+\end{equation*}
+and so $F(x,y)$ takes the form 
+\begin{equation*}
+F(x,y) = \frac{b_2 y + b_3}{c_2 y + c_3}.
+\end{equation*}
+Therefore if $a_3 = a_0$ we must have that 
+\begin{equation*}
+x = \frac{ b_2^2 y + b_2b_3 +b_3(c_2 y + c_3)}{c_2 b_2 y + c_2 b_3 + c_3 c_2 y + c_3^2},
+\end{equation*}
+but the left hand side depends only on $x$ and the right hand side depends only on $y$. This relation cannot hold for arbitrary $x,y$ and so we cannot have such $F$. Therefore we must have $c_2=0$ and so the only $F$ with period 3 are the ones we have given. 
+\end{proof}
 \end{document}
