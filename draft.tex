@@ -1,0 +1,36 @@
+
+\title{A Recurrence}
+\author{
+  Perry Kleinhenz \and
+  Fermi Ma \and
+  Erik Waingarten
+}
+\date{\today}
+
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+\emph{Written by Erik Waingarten}
+
+In this paper, we will study recurrences with \textit{memory two}. By memory two, we mean that the sequence can be described by a recurrence where a certain number depends on the previous two numbers. We can define a sequence $a_0, a_1, a_2, \dots$ recursively using a function $F(x,y)$ of two variables, where we assign
+\[ a_{n+1} = F(a_n, a_{n-1}) \]
+Note that this is the ultimate generalization of recurrences which depends on the previous two terms. The famous Fibonacci sequence fits this mold: we can let $F(x,y) = x + y$, and the recurrence will yield
+\[ a_{n+1} = a_n + a_{n-1} \]
+If we let $a_0 = a_1 = 1$, we get the Fibonacci sequence. In this paper, we will focus on the properties that arise out of different definitions of the functions $F(x,y)$, independent of the intial terms. So usually, we will let $a_0 = x$ and $a_1 = y$, and we assume that $x$ and $y$ can take on any values. We will say that a recursive definition is \textit{periodic} if, with indeterminate intiail values $a_0 = x$ and $a_1 = y$, there is an integer $n>0$ such that $a_n = x$ and $a_{n+1} = y$. The \emph{period} is the smallest such $n$. 
+
+We can compute some simple examples to promote our search. 
+\begin{itemize}
+\item $F(x,y) = y$: $x, y, x, y, x, \dots$, so we get period $2$.
+\item $F(x,y) = \dfrac{1}{xy}$: $x, y, \dfrac{1}{xy}, x, y, \dots$, so we get period $3$.
+\item $F(x,y) = \dfrac{1}{x}$: $x, y, \dfrac{1}{x}, \dfrac{1}{y}, x, y, \dots$, so we get period $4$.
+\end{itemize}
+
+There are some functions $F(x,y)$ such as the one generating the Fibonacci sequence which do not yield periodic sequences. One can ask, is there a simple test that determines whether a function yields a periodic sequence? Can we characterize the such functions? What are the possible periods?
+
+These are questions that we hope to answer. 
+
+\end{document}
