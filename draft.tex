@@ -9,6 +9,9 @@
 
 \documentclass[12pt]{article}
 \usepackage{amsmath}
+\usepackage{amsthm}
+
+\newtheorem{proposition}{Proposition}
 
 \begin{document}
 \maketitle
@@ -32,5 +35,46 @@ We can compute some simple examples to promote our search.
 There are some functions $F(x,y)$ such as the one generating the Fibonacci sequence which do not yield periodic sequences. One can ask, is there a simple test that determines whether a function yields a periodic sequence? Can we characterize the such functions? What are the possible periods?
 
 These are questions that we hope to answer. 
+
+\section{The case of $F(x,y) = f(y)/x$}
+
+We begin by studying the special case where $F(x,y) = \dfrac{f(y)}{x}$. So that means that the sequences are defined by the relation
+\begin{equation}
+\label{eq:firstcase}
+a_{n+1} = \dfrac{f(a_{n-1})}{a_n}
+\end{equation}
+In the introduction, we've already seen two functions in this form that are periodic. Namely, $f(y) = 1$ and $f(y) = \frac{1}{y}$. 
+
+\begin{proposition}
+The only possible $f$ which yields a sequence of period $3$ according to the recurrence in Equation~\ref{eq:firstcase} is $f(y) = \dfrac{c}{xy}$.
+\end{proposition}
+
+\begin{proof}
+We can look at the first few values of the sequence:
+\[ x, y, \dfrac{f(y)}{x}, x, y, \dots \]
+By looking at $a_4$, observe that
+\[ y = \dfrac{xf(x)}{f(y)} \]
+and so,
+\[ y f(y) = x f(x) \]
+Fix $x = 1$. Then we have $y f(y) = f(1)$, and so $f(y) = \dfrac{c}{y}$, where $c$ is any constant .
+\end{proof}
+
+Likewise, we can do a similar analysis for period $4$. 
+\begin{proposition}
+The only possible $f$ (polynomial) which yields a sequence of period 4 according to the recurrence in Equation~\ref{eq:firstcase} is $f(y) = c$. 
+\end{proposition}
+
+\begin{proof}
+First, we can easily check that these functions yield a sequence with period $4$. If we had any function $f$ which yielded a sequence with period $4$, then 
+\[ x, y, \dfrac{f(y)}{x}, \dfrac{f(f(y)/x)}{y}, x, y, \dots \]
+And by looking at $a_6$, observe
+\[ y = \dfrac{yf(x)}{f(f(y)/x)} \]
+and so 
+\[ f(f(y)/x) = f(x) \]
+If we fix $x = 1$, then we have
+\[ f(f(y)) = f(1) \]
+Which means that $f(f(y))$ is a constant for every $y$. And so since $f(y)$ is non-constant, it will take on infinitely many values, which means that $f(y) - f(1)$ is also a polynomial with infinitely many roots, and so $f(y) = f(1)$. 
+\end{proof}
+
 
 \end{document}
