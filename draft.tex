@@ -97,7 +97,7 @@ This means that $f(f(y))$ is a constant for every $y$. If we let $z=f(y)$ then w
 
 We can also perform this analysis for period $5$  
 \begin{proposition}
-If $F$ is of the form in equation ~\ref{eq:firstcase} and has period 4 and $f$ is a polynomial then $f(y) = cy+c^2$
+If $F$ is of the form in equation ~\ref{eq:firstcase} and has period 5 and $f$ is a polynomial then $f(y) = cy+c^2$. 
 \end{proposition}
 \begin{proof}
 First we must show that $a_5=a_0$ and $a_6=a_1$. Well 
@@ -120,7 +120,11 @@ We can finally calculate $a_6$ and find
 \begin{align*}
 a_6 = (cx + c^2) \frac{y}{cx+c^2} = y
 \end{align*}
-Therefore $f(y)=cy+c^2$ is periodic with period 5 as desired. 
+Therefore $f(y)=cy+c^2$ is periodic with period 5 as desired. Now we would like to show that all polynomial $f$ must be of this form. So if we consider an arbitrary $f$ we know that the first few terms of the sequence will be 
+\begin{equation*}
+x,y, \frac{f(y)}{x}, \frac{f(f(y)/x)}{y}, \frac{xf( f(f(y)/x)/y)}{f(y)}, x, y, \ldots
+\end{equation*}
+For ease of notation we will write $A=f(y)$
 \end{proof}
 
 
