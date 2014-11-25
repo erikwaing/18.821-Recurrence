@@ -37,16 +37,36 @@ There are some functions $F(x,y)$ such as the one generating the Fibonacci seque
 These are questions that we hope to answer. 
 
 \section{The case of $F(x,y) = f(y)/x$}
-\emph{Written by Erik Waingarten, edited by Perry Kleinhenz and Fermi Ma}
+\emph{Written by Erik Waingarten and Perry Kleinhenz, edited by Fermi Ma}
 
-We begin by considering the special case where 
+We begin by considering the special case where
 \begin{equation}\label{eq:firstcase}
 F(x,y) = \dfrac{f(y)}{x}
-\end{equation}. In other words, the sequences are defined by the relation
+\end{equation}. 
+In other words, the sequences are defined by the relation
 \begin{equation*}
 a_{n+1} = \dfrac{f(a_{n-1})}{a_n}
 \end{equation*}
-In the introduction, we've already seen two functions of this form that are periodic. Namely, $f(y) = 1$ and $f(y) = \frac{1}{y}$. 
+In the introduction, we've already seen two functions of this form that are periodic. Namely, $$f(y) = 1,$$ and $$f(y) = \frac{1}{y}.$$
+
+At first glance it is unclear if using functions of this form we can produce a recurrence relation for an arbitrary period. It is also unclear if all functions of a particular period will take the same form. In this section we classify functions of the form of equation \ref{eq:firstcase} for period 2,3,4 and 5. 
+
+\begin{proposition} 
+There are no $F$ of the form in equation \ref{eq:firstcase} with period 2.
+\end{proposition}
+\begin{proof}
+Assume otherwise so there is some $f$ of one variable that produces a recurrence relation of period 2. Then we must have 
+\begin{equation*}
+x = \frac{f(y)}{x},
+\end{equation*}
+or 
+\begin{equation*}
+x^2 = f(y).
+\end{equation*}
+Since this must hold for arbitrary $x$ and $y$, we can set $x=0$ and find that $f(y)=0$ for all $y$. But if we set $x=1$ we find that $f(y)=1$ for all $y$. This is a contradiction and so no such $f$ can exist.
+\end{proof}
+
+
 
 \begin{proposition}
 If $F$ is of the form in equation ~\ref{eq:firstcase} and has period 3, then $F(x,y) = \dfrac{c}{xy}$.
@@ -155,9 +175,8 @@ b_1^2 y + b_0 x = b_1^2 x + b_0 y.
 Setting $x=0$ we must have $b_0=b_1^2$. Therefore in order for the recurrence relation to have period 5 we must have $f(z)=cy+c^2$, as desired. 
 \end{proof}
 
-
-
 \section{Rational/Linear F}
+\emph{Written by Perry Kleinhenz, edited by Fermi Ma and Erik Waingarten}
 In this section we consider an $F$ which is a rational function composed of arbitrary linear functions. That is 
 \begin{equation}
 \label{rationallinear}
@@ -240,6 +259,4 @@ x = \frac{ b_2^2 y + b_2b_3 +b_3(c_2 y + c_3)}{c_2 b_2 y + c_2 b_3 + c_3 c_2 y +
 \end{equation*}
 but the left hand side depends only on $x$ and the right hand side depends only on $y$. This relation cannot hold for arbitrary $x,y$ and so we cannot have such $F$. Therefore we must have $c_2=0$ and so the only $F$ with period 3 are the ones we have given. 
 \end{proof}
-
-
 \end{document}
