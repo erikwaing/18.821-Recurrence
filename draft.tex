@@ -95,6 +95,35 @@ f(f(y)) = f(1).
 This means that $f(f(y))$ is a constant for every $y$. If we let $z=f(y)$ then we can see that $f(z)-f(1)$ is a polynomial in $z$ and has infinitely many roots. This is a contradiction as polynomials can only have finitely many roots. Therefore $f$ must be a constant. 
 \end{proof}
 
+We can also perform this analysis for period $5$  
+\begin{proposition}
+If $F$ is of the form in equation ~\ref{eq:firstcase} and has period 4 and $f$ is a polynomial then $f(y) = cy+c^2$
+\end{proposition}
+\begin{proof}
+First we must show that $a_5=a_0$ and $a_6=a_1$. Well 
+\begin{equation*}
+a_2 = \frac{cy+c^2}{x},
+\end{equation*}
+and so 
+\begin{equation*}
+a_3 = \frac{ c \frac{cy+c^2}{x} +c^2}{y} = \frac{c^2y + c^3+c^3x}{xy},
+\end{equation*}
+so
+\begin{equation*}
+a_4  = \frac{c \frac{cy + c^2+c^2x}{xy} +c^2}{\frac{cy+c^2}{x}} = \frac{c^2y+c^2+c^2x+c^2xy}{y(cy+c^2)} = \frac{c(c+x)}{y},
+\end{equation*}
+giving us 
+\begin{align*}
+a_5 &=\left(c \frac{c(c+x)}{y} + c^2\right) \frac{xy}{c^2y+c^3+c^3x} = \frac{c^2y+c^3+c^3x}{y} \frac{xy}{c^2y+c^3+c^3x}= x.
+\end{align*}
+We can finally calculate $a_6$ and find 
+\begin{align*}
+a_6 = (cx + c^2) \frac{y}{cx+c^2} = y
+\end{align*}
+Therefore $f(y)=cy+c^2$ is periodic with period 5 as desired. 
+\end{proof}
+
+
 \section{Rational/Linear F}
 In this section we consider an $F$ which is a rational function composed of arbitrary linear functions. That is 
 \begin{equation}
