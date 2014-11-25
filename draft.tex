@@ -124,8 +124,37 @@ Therefore $f(y)=cy+c^2$ is periodic with period 5 as desired. Now we would like 
 \begin{equation*}
 x,y, \frac{f(y)}{x}, \frac{f(f(y)/x)}{y}, \frac{xf( f(f(y)/x)/y)}{f(y)}, x, y, \ldots
 \end{equation*}
-For ease of notation we will write $A=f(y)$
+Now using the recurrence relation and setting $a_5=a$ and $a_6=y$, we obtain the relations
+\begin{align*}
+y &= \frac{ f(x)f(y)}{xf(f(f(y)/x)/y)} \\
+x &= \frac{y f( xf(f(f(y)/x)/y)/f(y)}{f(f(y)/x)}.
+\end{align*}
+This gives us 
+\begin{align*}
+ \frac{f(x)}{y} &= \frac{ xf(f(f(y)/x)/y)}{f(y)} \\
+xf\left(\frac{f(y)}{x}\right) &= y f\left( \frac{ xf(f(f(y)/x)/y)}{f(y)}\right).
+\end{align*}
+We note that the right hand side of the first equation can be plugged into the right hand side of the second equation to give us 
+\begin{equation}
+\label{period5relation}
+xf\left(\frac{f(y)}{x}\right) = y f\left(\frac{f(x)}{y}\right).
+\end{equation}
+Now if $f$ is some polynomial it takes the form $f(z) = b_n z^n + \cdots + b_1 z + b_0$, with $b_n \neq 0$. Plugging this definition into Equation \ref{period5relation} gives us 
+\begin{align*}
+&x\left( b_n \left( \frac{f(y)}{x}\right)^n + \cdots + b_1 \left( \frac{f(y)}{x}\right) + b_0 \right) = \\
+& y\left( b_n \left( \frac{f(x)}{y}\right)^n + \cdots + b_1 \left( \frac{f(x)}{y}\right) + b_0 \right). 
+\end{align*}
+Since $x$ and $y$ can take any values, we can set $x=1$ and let $y$ be arbitrary. The largest exponent of $y$ on the left hand side is $n^n$ while the largest exponent of $y$ on the right hand side is $1$. Since $y$ we can make it arbitrarily large so that the term with the largest exponent dominates, this gives us that $n^n=1$ so $n=1$ and $f(z) =b_1 z + b_0$. Plugging this back into Equation \ref{period5relation} gives us 
+\begin{equation*}
+x\left(b_1 \left( \frac{b_1 y + b_0}{x} \right) + b_0 \right) = y\left(b_1 \left( \frac{b_1 x + b_0}{y} \right) + b_0 \right),
+\end{equation*}
+which simplifies to 
+\begin{equation*}
+b_1^2 y + b_0 x = b_1^2 x + b_0 y.
+\end{equation*}
+Setting $x=0$ we must have $b_0=b_1^2$. Therefore in order for the recurrence relation to have period 5 we must have $f(z)=cy+c^2$, as desired. 
 \end{proof}
+
 
 
 \section{Rational/Linear F}
