@@ -175,6 +175,36 @@ b_1^2 y + b_0 x = b_1^2 x + b_0 y.
 Setting $x=0$ we must have $b_0=b_1^2$. Therefore in order for the recurrence relation to have period 5 we must have $f(z)=cy+c^2$, as desired. 
 \end{proof}
 
+We can also perform this analysis for period $6$  
+\begin{proposition}
+If $F$ is of the form in equation ~\ref{eq:firstcase} and has period 6 and $f$ is a polynomial then $f(y) = cy$. 
+\end{proposition}
+\begin{proof} 
+It is simple to see that $f(y)=cy$ produces a recurrence of period 6. Now we would like to show that all polynomial $f$ must be of this form. If we consider some arbitrary $f$ we know that we must have 
+\begin{align*}
+a_6 =x = \frac{f(a_5)}{a_4} \\ 
+a_7 = y = \frac{f(a_6)}{a_5},
+\end{align*}
+and so $a_5 = \frac{f(x)}{y}$. This also gives us that 
+\begin{equation*}
+a_4 x = f\left( \frac{f(x)}{y} \right).
+\end{equation*}
+Noting that 
+\begin{equation*}
+a_4 = \frac{ x f(f(f(y)/x)/y)}{f(y)}, 
+\end{equation*}
+we obtain 
+\begin{equation}
+\label{period6}
+ f\left( \frac{f(x)}{y} \right) = \frac{ x^2 f(f(f(y)/x)/y)}{f(y)}.
+\end{equation}
+Since $x$ and $y$ can take any values, we can set $y=1$ and let $x$ be arbitrary. Furthermore since $f$ is some polynomial it takes the form $f(z) = b_n z^n + \cdots + b_1 z +b_0$. Plugging these two into Equation \ref{period6} gives us 
+\begin{equation*}
+f(b_n x^n + \cdots + b_1 x + b_0) = x^2 f\left( b_n \frac{f(1)^n}{x^n} + \cdots + b_1 \frac{f(1)}{x} + b_0 \right).
+\end{equation*}
+We note that the largest exponent of $x$ on the left hand side is $n^n$ while the largest exponent of $y$ on the right hand side is $x^2$ if $b_0 \neq 0$. Since we can make $x$ arbitrarily large so that the term with the largest exponent dominates, this gives us that we must have $n^n=2$ if $b \neq 0$. This equation has no integer solutions and so we must have $b_0 =0$. Now if $b_1 \neq 0$ the largest exponent on the right hand side is $1$ and $n^n=1$ is solved by $n=1$ and so $f(z) = b_1 z$ as desired. 
+\end{proof}
+
 \section{Rational/Linear F}
 \emph{Written by Perry Kleinhenz, edited by Fermi Ma and Erik Waingarten}
 In this section we consider an $F$ which is a rational function composed of arbitrary linear functions. That is 
