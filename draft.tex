@@ -205,6 +205,54 @@ f(b_n x^n + \cdots + b_1 x + b_0) = x^2 f\left( b_n \frac{f(1)^n}{x^n} + \cdots 
 We note that the largest exponent of $x$ on the left hand side is $n^n$ while the largest exponent of $y$ on the right hand side is $x^2$ if $b_0 \neq 0$. Since we can make $x$ arbitrarily large so that the term with the largest exponent dominates, this gives us that we must have $n^n=2$ if $b \neq 0$. This equation has no integer solutions and so we must have $b_0 =0$. Now if $b_1 \neq 0$ the largest exponent on the right hand side is $1$ and $n^n=1$ is solved by $n=1$ and so $f(z) = b_1 z$ as desired. 
 \end{proof}
 
+\subsection{Generating Function for $\alpha_k$}
+If we have the recurrence relation for $\alpha_k$ 
+\begin{equation*}
+\alpha_k = n \alpha_{k-1} - \alpha_{k-2}, 
+\end{equation*}
+we can use generating functions to find a closed form for $\alpha$. If we let $G(\xi)$ be the generating function of $\alpha_k$, that is 
+\begin{equation*}
+G(\xi) = \sum_{k=0}^{\infty} a_k \xi^k,
+\end{equation*}
+then using the above recurrence relation we know that 
+\begin{equation*}
+G(\xi) -\alpha_0 - \alpha_1 \xi = n \xi G(\xi) - \alpha_0 \xi - \xi^2 G(\xi).
+\end{equation*}
+W e can see that this holds as 
+\begin{align*}
+G(\xi) &= \alpha_0 + &\alpha_1 \xi + &\alpha_2 \xi^2 + \cdots \\
+n \xi G(\xi) &= &n\alpha_0 \xi + &n\alpha_1 \xi^2 + n\alpha_2 \xi^3 + \cdots \\
+\xi^2 G(\xi) &= &&\alpha_0 \xi^2 + \alpha_1 \xi^3 + \alpha_2 \xi^4 + \cdots.
+\end{align*}
+Therefore we can see 
+\begin{equation*}
+G( \xi) (1-n \xi + \xi^2) = n\alpha_0 + \alpha_1 \xi - n\alpha_0 \xi,
+\end{equation*}
+and so simplifying and using the fact that $\alpha_0=1, \alpha_1=0$ gives us 
+\begin{equation*}
+G(\xi) = \frac{ 1 - n\xi}{1 - n \xi + \xi^2} .
+\end{equation*}
+Now we recall that our goal is to establish what $n$ we must choose in order for our sequence to be periodic of period $p$. In order for this to occur we must have $\alpha_p= \alpha_0$ and $\alpha_{p+1} = \alpha_1$. This gives us that 
+\begin{align*}
+G(\xi) = &\alpha_0 + \alpha_1 \xi + \alpha_2 \xi^2 + \cdots + \alpha_{p-1} \xi^{p-1} \\
++ \alpha_p(&\alpha_0 + \alpha_1 \xi + \alpha_2 \xi^2 + \cdots + \alpha_{p-1} \xi^{p-1}) \\ 
++ \cdots 
+\end{align*}
+and so 
+\begin{equation*}
+G(\xi) = \frac{1}{1- \xi^p} (\alpha_0 + \alpha_1 \xi + \alpha_2 \xi^2 + \cdots + \alpha_{p-1} \xi^{p-1}).
+\end{equation*}
+Combining these two relations gives us that if our sequence is of period $p$ then 
+\begin{equation*}
+\frac{ 1 - n\xi}{1 - n \xi + \xi^2} = \frac{1}{1- \xi^p} (\alpha_0 + \alpha_1 \xi + \alpha_2 \xi^2 + \cdots + \alpha_{p-1} \xi^{p-1}).
+\end{equation*}
+
+We also know that since the $\alpha_k$ are the coefficients of the power series of $G(\xi)$ we know that 
+\begin{equation*}
+\alpha_k = \frac{1}{k!} \frac{d^k}{d \xi^k} G(\xi) |_{\xi=0}.
+\end{equation*}
+
+
 \section{Rational/Linear F}
 \emph{Written by Perry Kleinhenz, edited by Fermi Ma and Erik Waingarten}
 In this section we consider an $F$ which is a rational function composed of arbitrary linear functions. That is 
