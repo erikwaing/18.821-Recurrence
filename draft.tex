@@ -17,24 +17,31 @@
 \maketitle
 
 \section{Introduction}
-\emph{Written by Erik Waingarten}
+\emph{Written by Erik Waingarten and Perry Kleinhenz, edited by Fermi Ma}
 
-In this paper, we will study recurrences with \textit{memory two}. By memory two, we mean that the sequence can be described by a recurrence where a certain number depends on the previous two numbers. We can define a sequence $a_0, a_1, a_2, \dots$ recursively using a function $F(x,y)$ of two variables, where we assign
-\[ a_{n+1} = F(a_n, a_{n-1}) \]
-Note that this is the ultimate generalization of recurrences which depends on the previous two terms. The famous Fibonacci sequence fits this mold: we can let $F(x,y) = x + y$, and the recurrence will yield
-\[ a_{n+1} = a_n + a_{n-1} \]
-If we let $a_0 = a_1 = 1$, we get the Fibonacci sequence. In this paper, we will focus on the properties that arise out of different definitions of the functions $F(x,y)$, independent of the intial terms. So usually, we will let $a_0 = x$ and $a_1 = y$, and we assume that $x$ and $y$ can take on any values. We will say that a recursive definition is \textit{periodic} if, with indeterminate intiail values $a_0 = x$ and $a_1 = y$, there is an integer $n>0$ such that $a_n = x$ and $a_{n+1} = y$. The \emph{period} is the smallest such $n$. 
+In this paper, we study recurrent sequences in which a the value of a term is defined as a function of the previous two terms. That is we consider sequences $a_0, a_1, a_2, \dots$ defined recursively using a function $F(x,y)$ of two variables, where we set
+\begin{equation*}
+a_{n+1} = F(a_n, a_{n-1}).
+\end{equation*}
+It is clear that any recurrence which depends on the previous two terms can be expressed in this form. For example the famous Fibonacci sequence fits this mold: if we define $F(x,y) = x + y$, then 
+\begin{equation*}
+a_{n+1} = a_n + a_{n-1},
+\end{equation*}
+and letting $a_0 =0 , a_1 = 1$, produces the Fibonacci sequence. 
 
-We can compute some simple examples to promote our search. 
-\begin{itemize}
-\item $F(x,y) = y$: $x, y, x, y, x, \dots$, so we get period $2$.
-\item $F(x,y) = \dfrac{1}{xy}$: $x, y, \dfrac{1}{xy}, x, y, \dots$, so we get period $3$.
-\item $F(x,y) = \dfrac{1}{x}$: $x, y, \dfrac{1}{x}, \dfrac{1}{y}, x, y, \dots$, so we get period $4$.
-\end{itemize}
+In this paper we focus on whether or not a function $F$ will produce a sequence which is \emph{periodic} for any values of $a_0$ and $a_1$. In order to make this notion precise we give a formal definition.
+\begin{definition}
+A recurrence relation $F(x,y)$ is \textit{periodic} if  there exists an integer $n>0$ such that for any $x,y$, when $a_0 = x$ and $a_1 = y$ we have $a_n = x$ and $a_{n+1} = y$. The \emph{period} of $F$ is the smallest such $n$. 
+\end{definition}
 
-There are some functions $F(x,y)$ such as the one generating the Fibonacci sequence which do not yield periodic sequences. One can ask, is there a simple test that determines whether a function yields a periodic sequence? Can we characterize the such functions? What are the possible periods?
+%We can compute some simple examples to promote our search. 
+%\begin{itemize}
+%\item $F(x,y) = y$: $x, y, x, y, x, \dots$, so we get period $2$.
+%\item $F(x,y) = \dfrac{1}{xy}$: $x, y, \dfrac{1}{xy}, x, y, \dots$, so we get period $3$.
+%\item $F(x,y) = \dfrac{1}{x}$: $x, y, \dfrac{1}{x}, \dfrac{1}{y}, x, y, \dots$, so we get period $4$.
+%\end{itemize}
 
-These are questions that we hope to answer. 
+In Section 2 we explore a simplification of the question; we only consider $F$ of the form $F(x,y)=f(y)/x$. If we assume that $f$ is a polynomial we can completely classify such $F$ of period 2,3,4,5 and 6. We also show that for any $n>0$ we can produce a $f(y)$ such that $F$ has period $n$.  In Section 3 we look at another simplification of the question; we consider $F$ of the form $f(x,y)/g(x,y)$ where $f$ and $g$ are linear polynomials. We are able to completely describe $F$ of period 2 and 3. 
 
 \section{The case of $F(x,y) = f(y)/x$}
 \emph{Written by Erik Waingarten and Perry Kleinhenz, edited by Fermi Ma}
