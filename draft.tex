@@ -340,7 +340,24 @@ We first notice that $\alpha_k$ and $\beta_k$ are similar sequences, as they can
 
 The recurrence relation follows from simply inspecting the function $F(x,y) = y^n/x$.
 
-Note also that $-\beta_k = \alpha_{k+1}$. This follows from the fact that this holds true from looking at the $k =0$ and $k = 1$ cases, and then noticing that the recurrence relations preserve this property.
+We also have a relation between $\alpha_k$ and $\beta_k$. 
+\begin{lemma} 
+\label{ab} For $k\geq 0$
+\begin{equation*}
+\alpha_{k+1} = - \beta_{k}.
+\end{equation*}
+\end{lemma}
+\begin{proof}
+We will show this using induction. As a base case note that $\alpha_1 = 0 = \beta_0$, and $\alpha_2 = -n = \beta_1$. Now if we assume this holds for $k \leq m$ and would like to show it holds for $k = m+1$ consider $\alpha_{m+1}$
+\begin{equation*}
+\alpha_{m+1} = n \alpha_{m} - \alpha_{m-1}.
+\end{equation*}
+Well $\alpha_m = -\beta_{m-1}$ and $\alpha_{m-1} = - \beta_{m-2}$ and so 
+\begin{equation*}
+\alpha_{m+1} = - n \beta_{m-1} + \beta_{m-2} = -\beta_{m},
+\end{equation*}
+as desired.
+\end{proof}
 
 We also note that $\beta_k$ can be written as 
 \begin{align*}
@@ -363,23 +380,6 @@ It remains to show that these equations always produce a real solution for $n$.
 
 \subsection{Existence of Common Solutions}
 
-\begin{lemma} 
-\label{ab} For $k\geq 1$
-\begin{equation*}
-\alpha_{k+1} = - \beta_{k}.
-\end{equation*}
-\end{lemma}
-\begin{proof}
-We will show this using induction. As a base case note that $\alpha_2 = -1 = \beta_1$, and $\alpha_3 = -n = \beta_2$. Now if we assume this holds for $k \leq m$ and would like to show it holds for $k = m+1$ consider $\alpha_{m+1}$
-\begin{equation*}
-\alpha_{m+1} = n \alpha_{m} - \alpha_{m-1}.
-\end{equation*}
-Well $\alpha_m = -\beta_{m-1}$ and $\alpha_{m-1} = - \beta_{m-2}$ and so 
-\begin{equation*}
-\alpha_{m+1} = - n \beta_{m-1} + \beta_{m-2} = -\beta_{m},
-\end{equation*}
-as desired.
-\end{proof}
 Now if we want to choose an $n$ such that  $F(x,y)$ has period $p$, our choice of $n$ must solve the equations 
 \begin{align*}
 x^{\alpha_p} y^{\beta_p} = x^{1}y^{0} \\
