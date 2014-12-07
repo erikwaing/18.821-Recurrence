@@ -447,8 +447,24 @@ Combining these two relations gives us that if our sequence is of period $p$ the
 \begin{equation*}
 \frac{ 1 - n\xi}{1 - n \xi + \xi^2} = \frac{1}{1- \xi^p} (\alpha_0 + \alpha_1 \xi + \alpha_2 \xi^2 + \cdots + \alpha_{p-1} \xi^{p-1}).
 \end{equation*}
+We can deduce additional properties of $n$ from this relation. Note that in order to have equality of rational functions, the zeroes of the functions on both sides must be the same. 
+The only zero on the left hand side is $\xi = 1/n$, (note that $1-n*1/n + 1/n^2 \neq 0$). The numerator of the left hand side has $p-1$ zeroes in the complex plane, while the denominator has exactly $p$ zeroes. In fact we know that the zeroes of $1 - \xi^p$ are $\xi = e^{2 \pi i k/p}$ for $k=0,1,2, \ldots, p-1$. Therefore $p-2$ of the zeroes of the numerator polynomial must be $p$th roots of unity, while the last root must be $\xi = 1/n$. 
 
-We also know that since the $\alpha_k$ are the coefficients of the power series of $G(\xi)$ we know that 
+Note also that the locations of discontinuities for both functions must be the same. Therefore we must have that the zeroes of $1-n\xi + \xi^2$ are the same as those zeroes of the denominator of the left hand side which were not canceled out. Thus for some $l$ and $m$, we must have 
+\begin{align*}
+(\xi - e^{2 \pi i l/p})(\xi - e^{2 \pi i m/p}) = 1 - n \xi + \xi^2,
+\end{align*}
+or 
+\begin{align*}
+n = e^{2 \pi i l/p} + e^{2 \pi i m/p} \\
+1 = e^{2 \pi i (l+m)/p}.
+\end{align*}
+So $n$ must be the sum of some $p$th roots of unity, and in fact these roots of unity must be conjugates of one another, so $n$ is always real and 
+\begin{equation*}
+n= 2 \cos(2 \pi l/p), 
+\end{equation*}
+for some $l \in \{0, 1,2, \ldots, p-1\}$. 
+Since the $\alpha_k$ are the coefficients of the power series of $G(\xi)$ we also know that 
 \begin{equation*}
 \alpha_k = \frac{1}{k!} \frac{d^k}{d \xi^k} G(\xi) |_{\xi=0}.
 \end{equation*}
