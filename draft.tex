@@ -119,56 +119,39 @@ And in particular, this tells us that $f(f(y))$ is a constant. Now suppose that 
 
 \subsection{Period 5}
 
-We can also perform this analysis for period $5$  
+Similarly, for period 5, we make the assumption that $f(y)$ is a polynomial in $y$. 
+
 \begin{proposition}
-If $F$ is of the form in equation ~\ref{eq:firstcase} and has period 5 and $f$ is a polynomial then $f(y) = cy+c^2$. 
+If $F(x,y) = f(y)/x$ and $f(y)$ is a polynomial in $y$, then the resulting sequence has period 5 if and only if $f(y) = cy + c^2$ for any constant $c$.
 \end{proposition}
+
 \begin{proof}
-First we must show that $a_5=a_0$ and $a_6=a_1$. Well 
+We omit the proof that this function indeed produces period 5. The proof simply involves writing out the sequence as given by the recurrence relation, and verifying that this works.
+
+We show that if the sequnce has period 5, then $f(y)$ must be of this form. We know that the sequence must look like
 \begin{equation*}
-a_2 = \frac{cy+c^2}{x},
+x,y, \frac{f(y)}{x}, \frac{f(f(y)/x)}{y}, \frac{xf( f(f(y)/x)/y)}{f(y)}, x, y, \dots .
 \end{equation*}
-and so 
+We know that the sixth term must be $\frac{y f( xf(f(f(y)/x)/y)/f(y))}{f(f(y)/x)}$ and the seventh term must be $\frac{ f(x)f(y)}{xf(f(f(y)/x)/y)}$ due to the recurrence relation. This gives the equations
+\begin{align*}
+x &= \frac{y f( xf(f(f(y)/x)/y)/f(y))}{f(f(y)/x)}\\
+y &= \frac{ f(x)f(y)}{xf(f(f(y)/x)/y)}.
+\end{align*}
+These equations can be rewritten as
+\begin{align*}
+xf\left(\frac{f(y)}{x}\right) &= y f\left( \frac{ xf(f(f(y)/x)/y)}{f(y)}\right) \\
+\frac{f(x)}{y} &= \frac{ xf(f(f(y)/x)/y)}{f(y)}. 
+\end{align*}
+We note that the right hand side of the second equation can be plugged into the right hand side of the first equation to give us 
 \begin{equation*}
-a_3 = \frac{ c \frac{cy+c^2}{x} +c^2}{y} = \frac{c^2y + c^3+c^3x}{xy},
-\end{equation*}
-so
-\begin{equation*}
-a_4  = \frac{c \frac{cy + c^2+c^2x}{xy} +c^2}{\frac{cy+c^2}{x}} = \frac{c^2y+c^2+c^2x+c^2xy}{y(cy+c^2)} = \frac{c(c+x)}{y},
-\end{equation*}
-giving us 
-\begin{align*}
-a_5 &=\left(c \frac{c(c+x)}{y} + c^2\right) \frac{xy}{c^2y+c^3+c^3x} = \frac{c^2y+c^3+c^3x}{y} \frac{xy}{c^2y+c^3+c^3x}= x.
-\end{align*}
-We can finally calculate $a_6$ and find 
-\begin{align*}
-a_6 = (cx + c^2) \frac{y}{cx+c^2} = y
-\end{align*}
-Therefore $f(y)=cy+c^2$ is periodic with period 5 as desired. Now we would like to show that all polynomial $f$ must be of this form. So if we consider an arbitrary $f$ we know that the first few terms of the sequence will be 
-\begin{equation*}
-x,y, \frac{f(y)}{x}, \frac{f(f(y)/x)}{y}, \frac{xf( f(f(y)/x)/y)}{f(y)}, x, y, \ldots
-\end{equation*}
-Now using the recurrence relation and setting $a_5=a$ and $a_6=y$, we obtain the relations
-\begin{align*}
-y &= \frac{ f(x)f(y)}{xf(f(f(y)/x)/y)} \\
-x &= \frac{y f( xf(f(f(y)/x)/y)/f(y)}{f(f(y)/x)}.
-\end{align*}
-This gives us 
-\begin{align*}
- \frac{f(x)}{y} &= \frac{ xf(f(f(y)/x)/y)}{f(y)} \\
-xf\left(\frac{f(y)}{x}\right) &= y f\left( \frac{ xf(f(f(y)/x)/y)}{f(y)}\right).
-\end{align*}
-We note that the right hand side of the first equation can be plugged into the right hand side of the second equation to give us 
-\begin{equation}
-\label{period5relation}
 xf\left(\frac{f(y)}{x}\right) = y f\left(\frac{f(x)}{y}\right).
-\end{equation}
-Now if $f$ is some polynomial it takes the form $f(z) = b_n z^n + \cdots + b_1 z + b_0$, with $b_n \neq 0$. Plugging this definition into Equation \ref{period5relation} gives us 
+\end{equation*}
+Now if $f$ is some polynomial, it takes the form $f(z) = b_n z^n + \cdots + b_1 z + b_0$, with $b_n \neq 0$. Plugging this definition into the above equation gives us 
 \begin{align*}
 &x\left( b_n \left( \frac{f(y)}{x}\right)^n + \cdots + b_1 \left( \frac{f(y)}{x}\right) + b_0 \right) = \\
 & y\left( b_n \left( \frac{f(x)}{y}\right)^n + \cdots + b_1 \left( \frac{f(x)}{y}\right) + b_0 \right). 
 \end{align*}
-Since $x$ and $y$ can take any values, we can set $x=1$ and let $y$ be arbitrary. The largest exponent of $y$ on the left hand side is $n^n$ while the largest exponent of $y$ on the right hand side is $1$. Since $y$ we can make it arbitrarily large so that the term with the largest exponent dominates, this gives us that $n^n=1$ so $n=1$ and $f(z) =b_1 z + b_0$. Plugging this back into Equation \ref{period5relation} gives us 
+Since $x$ and $y$ can take any values, we can set $x=1$ and let $y$ be arbitrary. The largest exponent of $y$ on the left hand side is $n^2$ while the largest exponent of $y$ on the right hand side is $1$. Since $y$ can be arbitrarily large, the term with the largest exponent dominates. For large $y$, the only way the two sides can be equal is if $n^2 = 1$, and so $n = 1$. This means that the polynomial $f(z)$ must be linear, so we write $f(z) =b_1 z + b_0$. Simplifying the above equations by assuming linearity gives
 \begin{equation*}
 x\left(b_1 \left( \frac{b_1 y + b_0}{x} \right) + b_0 \right) = y\left(b_1 \left( \frac{b_1 x + b_0}{y} \right) + b_0 \right),
 \end{equation*}
@@ -176,37 +159,43 @@ which simplifies to
 \begin{equation*}
 b_1^2 y + b_0 x = b_1^2 x + b_0 y.
 \end{equation*}
-Setting $x=0$ we must have $b_0=b_1^2$. Therefore in order for the recurrence relation to have period 5 we must have $f(z)=cy+c^2$, as desired. 
+Setting $x=0$ we find that $b_0=b_1^2$. Therefore in order for the recurrence relation to have period 5 we must have $f(z)=cy+c^2$, as desired. 
 \end{proof}
 
-We can also perform this analysis for period $6$  
+\subsection{Period 6}
+
+The last case we consider is period 6. Our approach for handling this case is similar to the one we use for period 5. We give the following result.
+
 \begin{proposition}
-If $F$ is of the form in equation ~\ref{eq:firstcase} and has period 6 and $f$ is a polynomial then $f(y) = cy$. 
+If $F(x,y) = f(y)/x$ and $f(y)$ is a polynomial in $y$, then the resulting sequence has period 6 if and only if $f(y) = cy$ for any constant $c$.
 \end{proposition}
-\begin{proof} 
-It is simple to see that $f(y)=cy$ produces a recurrence of period 6. Now we would like to show that all polynomial $f$ must be of this form. If we consider some arbitrary $f$ we know that we must have 
+
+\begin{proof}
+It is not hard to see that $f(y) = cy$ produced a recurrence with period 6. The sequence is simply
+\[ x, y, \frac{cy}{x}, \frac{c^2}{x}, \frac{c^2}{y}, \frac{cx}{y}, x,y,\dots .\]
+
+Now we show that all polynomials $f(y)$ that produce period 6 must be of this form. Labeling the terms of the sequence as $a_0, a_1, a_2, \dots$, we get that 
 \begin{align*}
 a_6 =x = \frac{f(a_5)}{a_4} \\ 
 a_7 = y = \frac{f(a_6)}{a_5},
 \end{align*}
-and so $a_5 = \frac{f(x)}{y}$. This also gives us that 
+due to the periodicity condition. From this, we can deduce that $a_5 = \frac{f(x)}{y}$. This also gives us that 
 \begin{equation*}
 a_4 x = f\left( \frac{f(x)}{y} \right).
 \end{equation*}
-Noting that 
+Noting that the recurrence relation gives
 \begin{equation*}
 a_4 = \frac{ x f(f(f(y)/x)/y)}{f(y)}, 
 \end{equation*}
 we obtain 
-\begin{equation}
-\label{period6}
+\begin{equation*}
  f\left( \frac{f(x)}{y} \right) = \frac{ x^2 f(f(f(y)/x)/y)}{f(y)}.
-\end{equation}
-Since $x$ and $y$ can take any values, we can set $y=1$ and let $x$ be arbitrary. Furthermore since $f$ is some polynomial it takes the form $f(z) = b_n z^n + \cdots + b_1 z +b_0$. Plugging these two into Equation \ref{period6} gives us 
+\end{equation*}
+Since $x$ and $y$ can take any values, we can set $y=1$ and let $x$ be arbitrary. Furthermore since $f$ is some polynomial, it takes the form $f(z) = b_n z^n + \cdots + b_1 z +b_0$. Plugging these two into the above equation gives us 
 \begin{equation*}
 f(b_n x^n + \cdots + b_1 x + b_0) = x^2 f\left( b_n \frac{f(1)^n}{x^n} + \cdots + b_1 \frac{f(1)}{x} + b_0 \right).
 \end{equation*}
-We note that the largest exponent of $x$ on the left hand side is $n^n$ while the largest exponent of $y$ on the right hand side is $x^2$ if $b_0 \neq 0$. Since we can make $x$ arbitrarily large so that the term with the largest exponent dominates, this gives us that we must have $n^n=2$ if $b \neq 0$. This equation has no integer solutions and so we must have $b_0 =0$. Now if $b_1 \neq 0$ the largest exponent on the right hand side is $1$ and $n^n=1$ is solved by $n=1$ and so $f(z) = b_1 z$ as desired. 
+We note that the largest exponent of $x$ in the polynomial on the left hand side is $n^2$ while the largest exponent of $y$ in the polynomial on the right hand side is $x^2$ if $b_0 \neq 0$. Since we can make $x$ arbitrarily large so that the term with the largest exponent dominates, this gives $n^2 = 2$ if $b \neq 0$. This equation has no integer solutions, so we must have $b_0 =0$. Now if $b_1 = 0$ (and $b_0 = 0$), then the highest exponent of $x$ on the right hand side is 0, and so $n^2 = 0$, implying that the entire polynomial is the zero polynomial. The function is not periodic in this case. This means the only case remaining is when  $b_1 \neq 0$ (and $b_0 = 0$). In this case, the same argument as before tells us that $n^2 = 1$, so $n = 1$. So the only possible polynomial is $f(z) = b_1 z$ as desired. 
 \end{proof}
 
 
