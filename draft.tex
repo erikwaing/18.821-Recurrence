@@ -11,6 +11,12 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 
+\leftmargin=0.25in
+\oddsidemargin=0.25in
+\textwidth=6.0in
+\topmargin=-.4in
+\textheight=9.75in
+
 \newtheorem{proposition}{Proposition}
 \newtheorem{definition}{Definition}
 \newtheorem{lemma}{Lemma}
@@ -40,7 +46,7 @@ The paper is organized as follows. In Section~\ref{f(y)/x case}, we consider seq
 
 \section{The case of $F(x,y) = f(y)/x$}
 \label{f(y)/x case}
-\emph{Written by Erik Waingarten and Perry Kleinhenz, edited by Fermi Ma}
+\emph{Written by Erik Waingarten, Perry Kleinhenz, and Fermi Ma}
 
 We begin by investigate the special case of functions $F(x,y) = f(y)/x$. In this section, we look at periods 2, 3, 4, 5 and 6 as separate cases, and manage to fully classify the polynomials $f(y)$ that produce these periods. For periods 2 and 3, we do not need the assumption that we are dealing with polynomials, but we do need this assumption for periods 4, 5 and 6. However, we will see in this section that our analysis increases significantly in complexity as the period increases, making it unlikely that this approach will help us deal with general periods $p$.
 
@@ -198,28 +204,33 @@ f(b_n x^n + \cdots + b_1 x + b_0) = x^2 f\left( b_n \frac{f(1)^n}{x^n} + \cdots 
 We note that the largest exponent of $x$ in the polynomial on the left hand side is $n^2$ while the largest exponent of $y$ in the polynomial on the right hand side is $x^2$ if $b_0 \neq 0$. Since we can make $x$ arbitrarily large so that the term with the largest exponent dominates, this gives $n^2 = 2$ if $b \neq 0$. This equation has no integer solutions, so we must have $b_0 =0$. Now if $b_1 = 0$ (and $b_0 = 0$), then the highest exponent of $x$ on the right hand side is 0, and so $n^2 = 0$, implying that the entire polynomial is the zero polynomial. The function is not periodic in this case. This means the only case remaining is when  $b_1 \neq 0$ (and $b_0 = 0$). In this case, the same argument as before tells us that $n^2 = 1$, so $n = 1$. So the only possible polynomial is $f(z) = b_1 z$ as desired. 
 \end{proof}
 
+To conclude this section, we observe that this case analysis grew more and more complicated as we increased the desired period. This is simply due to the fact that at each step of the recurrence, the expressions grow more and more complicated. Thus, this sort of analysis does not seem to be a viable way of coming up with general statements about functions that work for arbitrary periods.
 
 \section{Rational/Linear F}
 \label{rational and linear F}
 \emph{Written by Perry Kleinhenz, edited by Fermi Ma and Erik Waingarten}
-In this section we consider an $F$ which is a rational function composed of arbitrary linear functions. That is 
+
+In this section we consider the case where $F(x,y)$ is the quotient of two linear functions. That is,
 \begin{equation}
 \label{rationallinear}
-F(x,y) = \frac{ b_1 x + b_2 y + b_3}{ c_1 x+ c_2 y + c_3}
+F(x,y) = \frac{ b_1 x + b_2 y + b_3}{ c_1 x+ c_2 y + c_3}.
 \end{equation}
-Recall that our recurrence is $a_{n+1} = F( a_{n-1}, a_n)$. We can write out the first few terms of the sequence with arbitrary starting values $x,y$
-\begin{align}
-a_0 &= x \\ 
-a_1 &=y \\
-a_2 &= \frac{ b_1 x + b_2 y + b_3}{ c_1 x+ c_2 y + c_3}\\
-\label{athree}a_3 &= \frac{(c_1 x+ c_2 y + c_3) b_1 y + b_2 (b_1 x + b_2 y + b_3)+ b_3(c_1 x+ c_2 y + c_3)}{ (c_1 x+ c_2 y + c_3)c_1 y+ c_2 (b_1 x + b_2 y + b_3) + c_3(c_1 x+ c_2 y + c_3)} \\
-\vdots
-\end{align}
-These expressions get complicated very quickly, but we can use them to classify the periodic behavior of these functions.
 
-It is somewhat obvious that $F(x,y)=x$ is the only ratio of linear functions that has period 2, however for larger $n$ the question and answer are slightly more interesting. 
+We approach this problem by considering specific values for the periods. In the case of period 2, the only function that works is $F(x,y) = x$, which we get immediately from setting the third term of the sequence equal to the first term. For the remainder of this section, we focus on the case where the period is 3.
+
+We first write out the terms of the sequence as given by the recurrence relation:
+\begin{align*}
+a_0 &= x \\ 
+a_1 &= y \\
+a_2 &= \frac{ b_1 x + b_2 y + b_3}{ c_1 x+ c_2 y + c_3}\\
+a_3 &= \frac{(c_1 x+ c_2 y + c_3) b_1 y + b_2 (b_1 x + b_2 y + b_3)+ b_3(c_1 x+ c_2 y + c_3)}{ (c_1 x+ c_2 y + c_3)c_1 y+ c_2 (b_1 x + b_2 y + b_3) + c_3(c_1 x+ c_2 y + c_3)}.\\
+\vdots
+\end{align*}
+
+We now state our main result.
+
 \begin{proposition} 
-If $F(x,y)$ is of the form in Equation \ref{rationallinear} and the recurrence relation it produces has period $3$ then $F$ is one of three following functions:
+If $F(x,y)$ is of the form in Equation \ref{rationallinear} and the recurrence relation it produces has period $3$, then $F(x,y)$ is one of three following functions:
 \begin{align*}
 F(x,y) &= -x-y \\
 F(x,y) &= \left( \frac{1}{2} +\frac{i\sqrt{3}}{2} \right) x + \left( \frac{1}{2} -\frac{i\sqrt{3}}{2} \right) y \\
@@ -227,28 +238,28 @@ F(x,y) &= \left( \frac{1}{2} -\frac{i\sqrt{3}}{2} \right) x + \left( \frac{1}{2}
 \end{align*}
 \end{proposition}
 \begin{proof}
-In order for $F(x,y)$ to induce a recurrence relation with period $3$ we must have $a_3=a_0$. So using the expression in Equation \ref{athree} we must have 
+In order for $F(x,y)$ to induce a recurrence relation with period $3$ we must have $a_3=a_0$. This means that we have
 \begin{align*}
-\left( (c_1 x + c_2 y +c_3) c_1 y + c_2 (b_1 x + b_2 y + b_3) + c_3(c_1 x + c_2 y +c_3) \right) x = \\(c_1 x + c_2 y + c_3) b_1 y + b_2(b_1 x + b_2 y + b_3) + b_3 (c_1 x = c_2 y + c_3),
+\left( (c_1 x + c_2 y +c_3) c_1 y + c_2 (b_1 x + b_2 y + b_3) + c_3(c_1 x + c_2 y +c_3) \right) x = \\(c_1 x + c_2 y + c_3) b_1 y + b_2(b_1 x + b_2 y + b_3) + b_3 (c_1 x = c_2 y + c_3).
 \end{align*}
-If we multiply this expression out we get 
+Expanding out this expression gives
 \begin{align*}
 c_1^2 x^2 y + c_2 c_1 y^2 x + (c_3 c_1 + c_2 b_2 + c_3 c_2)xy + (c_2b_1 + c_3 c_1) x^2 + (b_3 + c_3)x = \\ c_1 b_1 xy + c_2 b_1 y^2 + c_3 b_1 y + (b_2 b_1 + b_3 c_1)x + (b_2^2 +b_3 c_2)y + b_2 b_3 + b_3 c_3.
 \end{align*}
-Because this relation must hold for arbitrary $x$ and $y$ we know that terms with the same exponents for $x$ and $y$ must cancel. So for instance we must have 
-\begin{equation*}
-c_1^2 x^2 y = 0, 
-\end{equation*}
+Because this relation must hold for arbitrary $x$ and $y$, the polynomials on both sides must be the same polynomial. If they are not, then we have two distinct polynomials that agree at all values of $x$ and $y$, and then their difference is a nonzero polynomial that equals zero everywhere, which is impossible.
+
+So by matching coefficients of terms on the left hand side with coefficients of terms on the right hand side, we get a number of relations. For instance, there is a $c_1^2 x^2 y$ term on the left hand side but no $x^2y$ term on the right hand side, so $c_1 = 0$.
+
 and so we must have $c_1=0$. We can do this for terms of each order and find the following 5 relations for the coefficients 
-\begin{align}
+\begin{align*}
 \label{fiverelations}
 c_2(b_2 + c_3) =0 \\
 c_2 b_1 = 0 \\
 b_3 + c_3 = b_2 b_1 \\
 c_3 b_1 + b_2^2 + b_3 c_2 =0 \\
 b_3(b_2 + c_3) = 0. 
-\end{align}
-Suppose that $c_2 =0$, then $F$ is of the form 
+\end{align*}
+Suppose for now that $c_2 =0$. Then $F$ is of the form 
 \begin{equation*}
 F(x,y) = \frac{ b_1 x + b_2 y + b_3}{c_3}.
 \end{equation*}
@@ -256,35 +267,32 @@ Therefore we must have
 \begin{equation*}
 c_3^2 x = b_1 c_3 y + b_2 (b_1 x + b_2 y + b_3) + b_3,
 \end{equation*}
-which gives us a new family of relations 
+which gives us a new family of relations.
 \begin{align*}
 b_2 b_1 = c_3^2 \\
 c_3 b_1 + b_2^2 =0.
 \end{align*}
-Combining these two gives us 
+Combining these two equations gives us 
 \begin{equation*}
 c_3^3 + b_2^3 = 0, 
 \end{equation*}
-which has three solutions $c_3 = -b_2$ and $c_3 = \frac{1}{2} ( b_2 \pm i\sqrt{3}b_2)$. Note that $c_3 = -b_2$ implies that we must have $b_1=b_2$ which gives us $F(x,y) = -x -y$. It is easy to check that this is in fact periodic with period 3. On the other hand $c_3 = \frac{1}{2} ( b_2 \pm i\sqrt{3}b_2)$ implies that $b_1 = \frac{1}{2} ( -b_2 \pm i\sqrt{3}b_2)$, which gives us 
+which has the solutions $c_3 = -b_2$ and $c_3 = \frac{1}{2} ( b_2 \pm i\sqrt{3}b_2)$. Note that $c_3 = -b_2$ implies that we must have $b_1=b_2$ which gives us $F(x,y) = -x -y$. It is easy to check that this is in fact periodic with period 3. On the other hand $c_3 = \frac{1}{2} ( b_2 \pm i\sqrt{3}b_2)$ implies that $b_1 = \frac{1}{2} ( -b_2 \pm i\sqrt{3}b_2)$, which gives us 
 \begin{align*}
 F(x,y) &= \left( \frac{1}{2} -\frac{i\sqrt{3}}{2} \right) x + \left( \frac{1}{2} +\frac{i\sqrt{3}}{2} \right) y \\
 F(x,y) &= \left( \frac{1}{2} +\frac{i\sqrt{3}}{2} \right) x + \left( \frac{1}{2} -\frac{i\sqrt{3}}{2} \right) y.
 \end{align*}
-It is also easy to check that these two $F$ have period 3. This exhausts the possibilities when $c_2=0$ so let us asssume otherwise. Then based on the relations \ref{fiverelations} we must have 
-\begin{equation*}
-b_1 = 0,
-\end{equation*}
-and so $F(x,y)$ takes the form 
+We can also verify that these two functions give a sequence with period 3. This exhausts the possibilities when $c_2=0$, so now asssume otherwise. Earlier, we had derived the relation $c_2b_1 = 0$. If $c_2 = 0$, then $b_1 = 0$, so $F(x,y)$ takes the form 
 \begin{equation*}
 F(x,y) = \frac{b_2 y + b_3}{c_2 y + c_3}.
 \end{equation*}
-Therefore if $a_3 = a_0$ we must have that 
+Therefore if $a_3 = a_0$, we must have that 
 \begin{equation*}
-x = \frac{ b_2^2 y + b_2b_3 +b_3(c_2 y + c_3)}{c_2 b_2 y + c_2 b_3 + c_3 c_2 y + c_3^2},
+x = \frac{ b_2^2 y + b_2b_3 +b_3(c_2 y + c_3)}{c_2 b_2 y + c_2 b_3 + c_3 c_2 y + c_3^2}.
 \end{equation*}
-but the left hand side depends only on $x$ and the right hand side depends only on $y$. This relation cannot hold for arbitrary $x,y$ and so we cannot have such $F$. Therefore we must have $c_2=0$ and so the only $F$ with period 3 are the ones we have given. 
+However, equation cannot hold for arbitrary $x$ and $y$, as the left hand side depends only on $x$ and the right hand side depends only on $y$. So $c_2=0$ and so the only functions that produce a sequence with period 3 are the ones we have given. 
 \end{proof}
 
+Given how complex the expression for $a_3$ was, we did not consider the case of period 4, as that would require analyzing $a_4$. This motivates the need for a different approach to considering the case of arbitrary periods, which we present in the following section.
 
 \section{The $f(y) = y^n$ Case}
 \label{general case}
