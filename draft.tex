@@ -36,44 +36,35 @@ In this paper we investigate the question of whether or not a function $F$ will 
 A recurrence relation $F(x,y)$ is \textit{periodic} if there exists an integer $p>0$ such that for any $x,y$, when $a_0 = x$ and $a_1 = y$ we have $a_p = x$ and $a_{p+1} = y$. In this paper, the period $p$ will refer to the smallest such integer.
 \end{definition}
 
-The paper is organized as follows. In Section~\ref{f(y)/x case}, we consider sequences of the form $F(x,y) = f(y)/x$ where $f(y)$ is a polynomial in $y$. For periods 2, 3, 4, 5, and 6, we give functions of this form that produce these periods, and show that no other functions of this form work. In Section~\ref{rational and linear F}, we look at another simplification of the question; we consider $F(x,y)$ of the form $f(x,y)/g(x,y)$ where $f$ and $g$ are both linear functions of $x$ and $y$. We are able to completely describe the functions $F(x,y)$ of this form that produce periods 2 and 3. Lastly, in Section~\ref{general case}, we consider the general problem of producing a periodic function $F(x,y)$ for any given period $p \geq 2$. We do this by looking at functions of the form $F(x,y) = y^n/x$ where $n$ can be any real or complex number. We give a method that we conjecture works for any given $p$, and we provide some ideas one might use to prove this conjecture. In addition, we support the conjecture with numerical evidence from Mathematica.
+The paper is organized as follows. In Section~\ref{f(y)/x case}, we consider sequences of the form $F(x,y) = f(y)/x$. For periods 2, 3, 4, 5, and 6, we give functions of this form that produce these periods, and show that no other functions of this form work. In Section~\ref{rational and linear F}, we look at another simplification of the question; we consider $F(x,y)$ of the form $f(x,y)/g(x,y)$ where $f$ and $g$ are both linear functions of $x$ and $y$. We are able to completely describe the functions $F(x,y)$ of this form that produce periods 2 and 3. Lastly, in Section~\ref{general case}, we consider the general problem of producing a periodic function $F(x,y)$ for any given period $p \geq 2$. We do this by looking at functions of the form $F(x,y) = y^n/x$ where $n$ can be any real or complex number. We give a method that we conjecture works for any given $p$, and we provide some ideas one might use to prove this conjecture. In addition, we support the conjecture with numerical evidence from Mathematica.
 
 \section{The case of $F(x,y) = f(y)/x$}
 \label{f(y)/x case}
 \emph{Written by Erik Waingarten and Perry Kleinhenz, edited by Fermi Ma}
 
-We begin by considering the special case where
-\begin{equation}\label{eq:firstcase}
-F(x,y) = \dfrac{f(y)}{x}
-\end{equation}. 
-In other words, the sequences are defined by the relation
-\begin{equation*}
-a_{n+1} = \dfrac{f(a_{n-1})}{a_n}
-\end{equation*}
-In the introduction, we've already seen two functions of this form that are periodic. Namely, $$f(y) = 1,$$ and $$f(y) = \frac{1}{y}.$$
+We begin by investigate the special case of functions $F(x,y) = f(y)/x$. In this section, we look at periods 2, 3, 4, 5 and 6 as separate cases, and manage to fully classify the polynomials $f(y)$ that produce these periods. However, we will see in this section that our analysis increases significantly in complexity as the period increases, making it unlikely that this approach will help us deal with general periods $p$.
 
-At first glance it is unclear if using functions of this form we can produce a recurrence relation for an arbitrary period. It is also unclear if all functions of a particular period will take the same form. In this section we classify functions of the form of equation \ref{eq:firstcase} for period 2,3,4 and 5. 
+\subsection{Period 2}
 
-\begin{proposition} 
-There are no $F$ of the form in equation \ref{eq:firstcase} with period 2.
-\end{proposition}
+We claim that there are no functions $f(y)/x$ that produce a period of 2. Note that for this claim, we do not need any assumptions about $f(y)$.
+
 \begin{proof}
-Assume otherwise so there is some $f$ of one variable that produces a recurrence relation of period 2. Then we must have 
+Assume otherwise. Then the sequence looks like
+\[ x,y,x,y,x,y,\dots , \]
+and in particular we have two expressions for the third term of the sequence. By definition, the third term is $f(y)/x$, but the periodicity requirement makes it equal to $x$. So we must have
 \begin{equation*}
 x = \frac{f(y)}{x},
 \end{equation*}
-or 
+or equivalently
 \begin{equation*}
 x^2 = f(y).
 \end{equation*}
-Since this must hold for arbitrary $x$ and $y$, we can set $x=0$ and find that $f(y)=0$ for all $y$. But if we set $x=1$ we find that $f(y)=1$ for all $y$. This is a contradiction and so no such $f$ can exist.
+This equation must hold for arbitrary $x$ and $y$, but setting $x = 0$ gives $f(y) = 0$ for all $y$, and setting $x = 1$ gives $f(y) = 1$ for all $y$. Contradiction.
 \end{proof}
 
+\subsection{Period 3}
 
-
-\begin{proposition}
-If $F$ is of the form in equation ~\ref{eq:firstcase} and has period 3, then $F(x,y) = \dfrac{c}{xy}$.
-\end{proposition}
+We claim that all functions $f(y)/x$ that produce a period of 3 are of the form $f(y) = \frac{c}{y}$. 
 
 \begin{proof}
 Consider the first 4 terms of the :
