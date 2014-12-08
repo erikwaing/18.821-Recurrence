@@ -36,20 +36,20 @@ In this paper we investigate the question of whether or not a function $F$ will 
 A recurrence relation $F(x,y)$ is \textit{periodic} if there exists an integer $p>0$ such that for any $x,y$, when $a_0 = x$ and $a_1 = y$ we have $a_p = x$ and $a_{p+1} = y$. In this paper, the period $p$ will refer to the smallest such integer.
 \end{definition}
 
-The paper is organized as follows. In Section~\ref{f(y)/x case}, we consider sequences of the form $F(x,y) = f(y)/x$. For periods 2, 3, 4, 5, and 6, we give functions of this form that produce these periods, and show that no other functions of this form work. In Section~\ref{rational and linear F}, we look at another simplification of the question; we consider $F(x,y)$ of the form $f(x,y)/g(x,y)$ where $f$ and $g$ are both linear functions of $x$ and $y$. We are able to completely describe the functions $F(x,y)$ of this form that produce periods 2 and 3. Lastly, in Section~\ref{general case}, we consider the general problem of producing a periodic function $F(x,y)$ for any given period $p \geq 2$. We do this by looking at functions of the form $F(x,y) = y^n/x$ where $n$ can be any real or complex number. We give a method that we conjecture works for any given $p$, and we provide some ideas one might use to prove this conjecture. In addition, we support the conjecture with numerical evidence from Mathematica.
+The paper is organized as follows. In Section~\ref{f(y)/x case}, we consider sequences of the form $F(x,y) = f(y)/x$. For periods 2, 3, 4, 5, and 6, we give functions of this form that produce these periods, and (under certain assumptions) show that no other functions of this form work. In Section~\ref{rational and linear F}, we look at another simplification of the question; we consider $F(x,y)$ of the form $f(x,y)/g(x,y)$ where $f$ and $g$ are both linear functions of $x$ and $y$. We are able to completely describe the functions $F(x,y)$ of this form that produce periods 2 and 3. Lastly, in Section~\ref{general case}, we consider the general problem of producing a periodic function $F(x,y)$ for any given period $p \geq 2$. We do this by looking at functions of the form $F(x,y) = y^n/x$ where $n$ can be any real or complex number. We give a method that we conjecture works for any given $p$, and we provide some ideas one might use to prove this conjecture. In addition, we support the conjecture with numerical evidence from Mathematica.
 
 \section{The case of $F(x,y) = f(y)/x$}
 \label{f(y)/x case}
 \emph{Written by Erik Waingarten and Perry Kleinhenz, edited by Fermi Ma}
 
-We begin by investigate the special case of functions $F(x,y) = f(y)/x$. In this section, we look at periods 2, 3, 4, 5 and 6 as separate cases, and manage to fully classify the polynomials $f(y)$ that produce these periods. However, we will see in this section that our analysis increases significantly in complexity as the period increases, making it unlikely that this approach will help us deal with general periods $p$.
+We begin by investigate the special case of functions $F(x,y) = f(y)/x$. In this section, we look at periods 2, 3, 4, 5 and 6 as separate cases, and manage to fully classify the polynomials $f(y)$ that produce these periods. For periods 2 and 3, we do not need the assumption that we are dealing with polynomials, but we do need this assumption for periods 4, 5 and 6. However, we will see in this section that our analysis increases significantly in complexity as the period increases, making it unlikely that this approach will help us deal with general periods $p$.
 
 \subsection{Period 2}
 
 We claim that there are no functions $f(y)/x$ that produce a period of 2. Note that for this claim, we do not need any assumptions about $f(y)$.
 
 \begin{proof}
-Assume otherwise. Then the sequence looks like
+Assume otherwise. Note the sequence looks like
 \[ x,y,x,y,x,y,\dots , \]
 and in particular we have two expressions for the third term of the sequence. By definition, the third term is $f(y)/x$, but the periodicity requirement makes it equal to $x$. So we must have
 \begin{equation*}
@@ -64,50 +64,60 @@ This equation must hold for arbitrary $x$ and $y$, but setting $x = 0$ gives $f(
 
 \subsection{Period 3}
 
-We claim that all functions $f(y)/x$ that produce a period of 3 are of the form $f(y) = \frac{c}{y}$. 
+We claim that a function $f(y)/x$ if and only if it is of the form $f(y) = \frac{c}{y}$ where $c$ is some constant. We separate this claim into two propositions, which we prove separately
 
-\begin{proof}
-Consider the first 4 terms of the :
-\begin{equation*}
-x, y, \dfrac{f(y)}{x}, x, y, \dots 
-\end{equation*}
-We note that $a_4=y$ and using the recurrence relation we find that 
-\begin{equation*}
-y = \dfrac{xf(x)}{f(y)},
-\end{equation*}
-and so,
-\begin{equation*} 
-y f(y) = x f(x).
-\end{equation*}
-Now if we fix $x = 1$, we have $y f(y) = f(1)$, and so $f(y) = \dfrac{c}{y}$, where $c$ is some constant .
-\end{proof}
-
-We can do a similar analysis for period $4$.
 \begin{proposition}
-f $F$ is of the form in equation ~\ref{eq:firstcase} and has period 4 and $f$ is a polynomial then $f(y) = c$. 
+If a function of the form $f(y)/x$ produces a period 3 sequence, it must be of the form $f(y) = \frac{c}{y}$ where $c$ is some constant.
 \end{proposition}
 
 \begin{proof}
-It is easy to check that these functions yield a sequence with period $4$, as they would form a sequence $x,y, \frac{c}{x}, \frac{c}{y}, x, y, \ldots$. 
+If the period is 3, then the sequence is
+\begin{equation*}
+x, y, \dfrac{f(y)}{x}, x, y, \dfrac{f(y)}{x}, \dots
+\end{equation*}
+The fourth term of the sequence must be of the form $\frac{x f(x)}{f(y)}$, which gives the relation
+\[ y = \frac{x f(x)}{f(y)}. \]
+Recall that we defined periodicity to mean that the sequence is periodic for \emph{all} choices of $x$ and $y$. In particular, this must hold when $x = 1$, in which case the relation is
+\[ y = \frac{f(1)}{f(y)} \]
+which tells us that $f(y) = \frac{f(1)}{y}$. Since $f(1)$ is a constant, this completes the proof.
+\end{proof}
 
-Now suppose we have some non constant polynomial  $f$ that produces a sequence with period $4$. The  the first few terms of the sequence are 
+\begin{proposition}
+Any function of the form $f(y) = \frac{c}{y}$ where $c$ is a constant will produce a period 3 sequence.
+\end{proposition}
+\begin{proof}
+This follows simply by writing down the sequence. The third term of the sequence will be $\frac{c}{xy}$, and the fourth term must then be $\frac{cxy}{cy} = x$, and the fifth term is $\frac{cxy}{cx} = y$. This completes the proof, as we have cycled back to $x$ and $y$.
+ \end{proof}
+
+\subsection{Period 4}
+
+To make claims about functions $f(y)/x$ for period 4, we must assume that $f(y)$ is a polynomial in $y$. Then we get the following result.
+
+\begin{proposition}
+If $F(x,y) = f(y)/x$ and $f(y)$ is a polynomial in $y$, then the resulting sequence has period 4 if and only if $f(y) = c$ for any constant $c$
+\end{proposition}
+
+\begin{proof}
+One direction of this claim is easy to check. If we set $f(y) = c$, our sequence is
+\[x,y, \frac{c}{x}, \frac{c}{y}, x, y, \dots .\]
+
+For the harder direction, suppose we have a sequence of period 4 and that the function is $f(y)/x$. Then we know that the sequence looks like
 \begin{equation*}
 x, y, \dfrac{f(y)}{x}, \dfrac{f(f(y)/x)}{y}, x, y, \dots \, .
 \end{equation*}
-We note that $a_5 =y$ and using the recurrence relation we find that 
-\begin{equation*}
- y = \dfrac{yf(x)}{f(f(y)/x)}, 
- \end{equation*}
-simplifying gives us  
-\begin{equation*}
- f(f(y)/x) = f(x).
-\end{equation*}
-If we fix $x = 1$, we have
-\begin{equation*}
-f(f(y)) = f(1). 
-\end{equation*}
-This means that $f(f(y))$ is a constant for every $y$. If we let $z=f(y)$ then we can see that $f(z)-f(1)$ is a polynomial in $z$ and has infinitely many roots. This is a contradiction as polynomials can only have finitely many roots. Therefore $f$ must be a constant. 
+Using the fact that the sixth term of the sequence is generated by a recurrence relation on the two previous terms, we know it must be $\dfrac{yf(x)}{f(f(y)/x)}$. On the other hand, periodicity tells us it is $y$, so we have
+\[ y = \dfrac{yf(x)}{f(f(y)/x)}.\]
+
+Simplifying this gives
+\[ f(f(y)/x) = f(x). \]
+
+If we set $x = 1$, then we get
+\[ f(f(y)) = f(1). \]
+
+And in particular, this tells us that $f(f(y))$ is a constant. Now suppose that $f(y)$ is a nonconstant polynomial. Then $f(y)$ can take on infinitely many values, and note that at all of these values $f(f(y)) - f(1) = 0$. This means that $f(f(y)) - f(1)$, a nonconstant polynomial in $f(y)$, has infinitely many roots. This is a contradiction, $f(y)$ must be a constant.
 \end{proof}
+
+\subsection{Period 5}
 
 We can also perform this analysis for period $5$  
 \begin{proposition}
