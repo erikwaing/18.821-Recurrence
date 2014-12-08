@@ -299,7 +299,7 @@ Given how complex the expression for $a_3$ was, we did not consider the case of 
 
 \emph{Written by Fermi Ma and Perry Kleinhenz, edited by Erik Waingarten}\\
 
-In this section we consider the case where $F(x,y) = f(y)/x$ where $f(y) = y^n$, where $n$ can be any complex number, not just an integer. The question we would like to answer is given an integer $p$ can we always come up with an $n$ such that $F$ has period $p$. We first explore some basic properties of the sequences such functions produce and compute an explicit example. We then give an explicit formula for the $k$th term in the sequence. Finally using a generating function we are able to produce a necessary condition for $n$, to produce a sequence with period $p$. Using Mathematica we verified numerically for values of $p$ up to 1000 that this necessary condition is also sufficient and because of this we conjecture 
+In this section we consider the case where $F(x,y) = f(y)/x$ with $f(y) = y^n$, where $n$ is any complex number, not just an integer. The question we would like to answer is given an integer $p$ can we always come up with an $n$ such that $F$ has period $p$. We first explore some basic properties of the sequences such functions produce and compute an explicit example. We then give an explicit formula for the $k$th term in the sequence. Finally using a generating function we are able to produce a necessary condition on $n$, in order for $F$ to produce a sequence with period $p$. Using Mathematica we were able to verify numerically for values of $p$ up to 1000 that this necessary condition is also sufficient. Because of this we conjecture 
 \begin{conjecture}
 \label{cos}
 Given any integer $p>2$ let 
@@ -310,11 +310,16 @@ with $l \in \{1,2,3, \ldots, p-1 \}$. Then $F(x,y) = y^n/x$ is periodic with per
 \end{conjecture}
 
 We begin by considering the sequence produced by $F(x,y) = y^n/x$ 
-\begin{equation*}
+\begin{equation}
+\label{exponents}
 x^1y^0, x^0y^1, x^{-1}y^{n}, x^{-n}y^{n^2-1}, x^{-n^2+1}y^{n^3-2n},x^{-n^3+n^2+n}y^{n^4-3n^2+1}, \dots \,.
-\end{equation*}
+\end{equation}
 
-The interesting thing to note is that all of the terms in the sequence are now monomials, which will simplify our analysis. Now let $\alpha_k$ be the sequence of the exponents of $x$ in the above sequence, and let $\beta_k$ be the sequence of exponents of $y$. We can easily compute the first few terms of the sequence
+We note that all of the terms in the sequence are now monomials, which simplifies our analysis. For simplicity we introduce the following notation.
+\begin{definition} 
+Let $\alpha_k$ be the sequence of exponents of $x$ in Equation \ref{exponents}, and $\beta_k$ be the sequence of exponents of $y$ in Equation \ref{exponents}.
+\end{definition}
+We can easily compute the first few terms of the sequence
 \begin{align*}
 \alpha_0 &= 1  &\beta_0& = 0\\
 \alpha_1 &= 0 &\beta_1& = 1\\
@@ -325,17 +330,25 @@ The interesting thing to note is that all of the terms in the sequence are now m
 \alpha_6 &= -n^4+3n^2 -1 &\beta_6& =n^5-4n^3+3n \\ 
 \alpha_7 &= -n^5+4n^3 - 3n &\beta_7& =n^6-5n^4+6n^2 - 1.
 \end{align*}
+We can use these sequences $\{\alpha_i\}$ and $\{\beta_i\}$ to compute values for $n$ that achieve certain periods. In particular if we can find an $n$ which solves the four equations 
+\begin{align*}
+\alpha_p &= 1 \\
+\beta_p &=0\\
+\alpha_{p+1} &=  0\\
+\beta_{p+1}&=1,
+\end{align*}
+then $F(x,y)=y^n/x$ has period $p$. 
 
-We can use these $\{\alpha_i\}$ and $\{\beta_i\}$ sequences to get values of $n$ that achieve certain periods. For example, if we want a function of the form $F(x,y) = y^n/x$ with period 5, we simply set $\alpha_5 = \alpha_0 = 1$, $\beta_5 = \beta_0 = 0$, $\alpha_6 = \alpha_1 = 0$, and $\beta_6 = \beta_1 = 1$. This gives us a system of four equations in one variable
+For example, if we want a function of the form $F(x,y) = y^n/x$ with period 5, we simply set $\alpha_5 = \alpha_0 = 1$, $\beta_5 = \beta_0 = 0$, $\alpha_6 = \alpha_1 = 0$, and $\beta_6 = \beta_1 = 1$. This gives us a system of four equations in one variable
 \begin{align*}
 -n^3+2n &= 1\\
 n^4-3n^2+1&=0\\
 -n^4+3n^2 -1&= 0\\
 n^5-4n^3+3&n=1\\
 \end{align*}
-There is no guarantee that this system has a solution, but it turns out that setting $n = -\frac{1+\sqrt{5}}{2} = \phi$, the golden ratio, works. This tells us that $F(x,y) = y^{-\phi}/x$ is periodic with period 5, and we can indeed check that this is the case.
+There is no guarantee that this system has a solution, but in fact $n = -\frac{1+\sqrt{5}}{2} = -\phi$, the golden ratio, is a solution. This tells us that $F(x,y) = y^{-\phi}/x$ is periodic with period 5, and we can check that indeed this is the case.
 
-We now give an explicit form for $\alpha_k$ and $\beta_k$ in terms of $k$ and $n$. Unfortunately we are not able to show that the equations these produce always have common solutions. 
+We now give explicit formulas for $\alpha_k$ and $\beta_k$ in terms of $k$ and $n$. Unfortunately we are not able to show that the equations these produce always have common solutions. 
 We first notice that $\alpha_k$ and $\beta_k$ are similar sequences, as they can be defined as
 \begin{align*}
 \alpha_0 = 1, \alpha_1 = 0, \alpha_k = n\alpha_{k-1} - \alpha_{k-2}\\
@@ -352,26 +365,27 @@ We note further that there is a relation between different terms of the two sequ
 \end{equation*}
 \end{lemma}
 \begin{proof}
-We will show this using induction. As a base case note that $\alpha_1 = 0 = \beta_0$, and $\alpha_2 = -n = \beta_1$. Now if we assume this holds for $k \leq m$ and would like to show it holds for $k = m+1$ consider $\alpha_{m+1}$
+We will show this using induction. As a base case note that $\alpha_1 = 0 = \beta_0$, and $\alpha_2 = -n = \beta_1$. Now if we assume this holds for $k \leq m$ and would like to show it holds for $k = m+1$ consider $\alpha_{m+1}$ which by the recurrence relation is
 \begin{equation*}
 \alpha_{m+1} = n \alpha_{m} - \alpha_{m-1}.
 \end{equation*}
-Well $\alpha_m = -\beta_{m-1}$ and $\alpha_{m-1} = - \beta_{m-2}$ and so 
+Well $\alpha_m = -\beta_{m-1}$ and $\alpha_{m-1} = - \beta_{m-2}$ by the induction hypothesis and so 
 \begin{equation*}
-\alpha_{m+1} = - n \beta_{m-1} + \beta_{m-2} = -\beta_{m},
+\alpha_{m+1} = - n \beta_{m-1} + \beta_{m-2} = -\beta_{m}.
 \end{equation*}
-as desired.
 \end{proof}
+Note that this Lemma also reduces the number of simultaneous equations that we need to solve from four to three as we always have $\alpha_{p+1} = - \beta_{p}$. Both are set to zero so it is enough to only include one of them in the system of equations 
 
+We now given an exact formula for $\beta_k$ 
 \begin{proposition} 
 For $k \geq 1$
+%= \binom{k-1}{k-1} n^{k-1} - \binom{k-2}{k-3}n^{k-3} +\binom{k-3}{k-5}n^{k-5} -\binom{k-4}{k-7}n^{k-7} + \dots \\
 \begin{align*}
-\beta_k = \binom{k-1}{k-1} n^{k-1} - \binom{k-2}{k-3}n^{k-3} +\binom{k-3}{k-5}n^{k-5} -\binom{k-4}{k-7}n^{k-7} + \dots \\
-=\sum_{i = 0}^{\lfloor (k-1)/2 \rfloor} (-1)^i\binom{k-1-i}{k-1-2i}n^{k-1-2i}\\
+\beta_k =\sum_{i = 0}^{\lfloor (k-1)/2 \rfloor} (-1)^i\binom{k-1-i}{k-1-2i}n^{k-1-2i}
 \end{align*}
 \end{proposition}
 \begin{proof}
-It is easy to check that this holds for $k = 1$ and $k = 2$.  If we plug it in to the recurrence relation
+It is easy to check that this holds for $k = 1$ and $k = 2$.  If we plug the formula into the recurrence relation
 \begin{equation*}
 \beta_k = n\beta_{k-1} - \beta_{k-2},
 \end{equation*}
@@ -380,36 +394,27 @@ we must have
 \sum_{i = 0}^{\lfloor (k-1)/2 \rfloor} (-1)^i\binom{k-1-i}{k-1-2i}n^{k-1-2i} = & n \sum_{i = 0}^{\lfloor (k-2)/2 \rfloor} (-1)^i\binom{k-2-i}{k-2-2i}n^{k-2-2i} \\
 & +\sum_{i = 0}^{\lfloor (k-3)/2 \rfloor} (-1)^i\binom{k-3-i}{k-3-2i}n^{k-3-2i}\\
 \end{align*}
-Checking this equation when $k$ is even and when $k$ is odd, as well as using combinatorial identities, shows that this expression for $\beta_k$ satisfies the recurrence relation. Because of this the expression must equal $\beta_k$ for $k \geq 1$.
+Checking this equation separately when $k$ is even or odd, as well as using combinatorial identities, shows that this expression for $\beta_k$ satisfies the recurrence relation. Because of this our formula is valid for $k \geq 1$.
 \end{proof}
 
-So we have an expression for $\beta_k$, which in turn gives us an expression for $\alpha_k$ by Lemma \ref{ab}. Thus, we know that if we want to attain a specific period $p$, we have to solve four equations involving these known expressions.
-
-In fact thes four equations are 
+This expression for $\beta_k$, gives us an expression for $\alpha_k$ by Lemma \ref{ab}. In order to obtain a function $F$ with period $p$ we must solve the three equations
 \begin{align*}
 \alpha_p &=1 \\
 \beta_p &=0\\ 
-\alpha_{p+1} &= 0 \\
-\beta_{p+1} &= 1.
+\beta_{p+1} &= 1,
 \end{align*}
-As shown in Lemma \ref{ab} above $\alpha_{p+1} = -\beta_p$,  $\beta_p=0$ and $\alpha_{p+1} =0$ are the same equation so we actually only need to find a value for $n$ which satisfies the three equations
-\begin{align*}
-\alpha_p &=1 \\
-\beta_p &=0\\ 
-\beta_{p+1} &= 1.
-\end{align*}
-It remains to show that these equations always produce a real solution for $n$.
+plugging in the explicit values for $\alpha_p, \beta_p$ and $\beta_{p+1}$. We were not able to show that these equations always produce a solution for $n$.
 \\ 
 
 
-Now using a generating function approach we give a necessary condition for $n$. 
-First we must produce the generating function for $\alpha_k$. Recall that a generating function of an infinite sequence is a formal power series with coefficients equal to the terms of the sequence.  So if $G(\xi)$ is the generating function of $\alpha_k$, then 
+Now using a generating function approach, given a desired period $p$, we give a necessary condition for $n$. 
+First we produce the generating function for $\alpha_k$. A generating function of an infinite sequence is a formal power series with coefficients equal to the terms of the sequence.  So if $G(\xi)$ is the generating function of $\alpha_k$, then 
 \begin{equation*}
 G(\xi) = \sum_{k=0}^{\infty} \alpha_k \xi^k,
 \end{equation*}
 where $\xi$ is some formal variable. We can find a closed form expression for $G(\xi)$.
 
-\begin{lemma} For a given $n$ the generating function for $\alpha_k$ is 
+\begin{lemma} The generating function for $\alpha_k$ is 
 \begin{equation*}
 G(\xi) = \frac{ 1 - n\xi}{1 - n \xi + \xi^2} .
 \end{equation*}
@@ -421,23 +426,15 @@ Recall the recurrence relation for $\alpha_k$
 \end{equation*}
 and note that 
 \begin{align*}
-G(\xi) &= \alpha_0 + &\alpha_1 \xi + &\alpha_2 \xi^2 + \cdots \\
-n \xi G(\xi) &= &n\alpha_0 \xi + &n\alpha_1 \xi^2 + n\alpha_2 \xi^3 + \cdots \\
-\xi^2 G(\xi) &= &&\alpha_0 \xi^2 + \alpha_1 \xi^3 + \alpha_2 \xi^4 + \cdots.
+G(\xi) &= \alpha_0 + \> \alpha_1 \xi + \>\> \alpha_2 \xi^2 + \cdots \\
+n \xi G(\xi) &= \qquad n\alpha_0 \xi + n\alpha_1 \xi^2 + n\alpha_2 \xi^3 + \cdots \\
+\xi^2 G(\xi) &= \qquad \qquad \quad \quad \alpha_0 \xi^2 + \alpha_1 \xi^3 +  \cdots.
 \end{align*}
-So if we subtract the second and third equations from the first and simplify using the recurrence relation we see 
+So if we subtract the second and third equations from the first, simplify using the recurrence relation and rearrange terms we obtain
 \begin{equation*}
-G(\xi) - n \xi G(\xi) - \xi^2 G(\xi) = \alpha_0 + \alpha_1 \xi - n \alpha \xi.
+G( \xi) (1-n \xi + \xi^2) = \alpha_0 + \alpha_1 \xi - n\alpha_0 \xi.
 \end{equation*}
-Rearranging this equation we can see 
-\begin{equation*}
-G( \xi) (1-n \xi + \xi^2) = n\alpha_0 + \alpha_1 \xi - n\alpha_0 \xi.
-\end{equation*}
-Using the fact that $\alpha_0=1, \alpha_1=0$ and rearranging gives us
-\begin{equation*}
-G(\xi) = \frac{ 1 - n\xi}{1 - n \xi + \xi^2},
-\end{equation*}
-as desired.
+Using the fact that $\alpha_0=1, \alpha_1=0$ and rearranging gives the desired result.
 \end{proof}
 
 We can also find another expression for $G(\xi)$ if we assume that the sequence is periodic. 
@@ -449,27 +446,25 @@ G(\xi) = \frac{1}{1- \xi^p} (\alpha_0 + \alpha_1 \xi + \alpha_2 \xi^2 + \cdots +
 \begin{proof}
 In order for the period of $F$ to be $p$ we must have $\alpha_p= \alpha_0$ and $\alpha_{p+1} = \alpha_1$. Plugging that into the power series form of $G(\xi)$ tells us that
 \begin{align*}
-G(\xi) = &\alpha_0 + \alpha_1 \xi + \alpha_2 \xi^2 + \cdots + \alpha_{p-1} \xi^{p-1} \\
-+ \xi^p(&\alpha_0 + \alpha_1 \xi + \alpha_2 \xi^2 + \cdots + \alpha_{p-1} \xi^{p-1}) \\ 
-+ \cdots \, ,
+G(\xi) =&  \qquad \> \alpha_0 + \alpha_1 \xi + \alpha_2 \xi^2 + \cdots + \alpha_{p-1} \xi^{p-1} \\
+ &+ \xi^p(\alpha_0 + \alpha_1 \xi + \alpha_2 \xi^2 + \cdots + \alpha_{p-1} \xi^{p-1}) \\ 
+ &+ \xi^{2p}(\alpha_0 + \alpha_1 \xi + \alpha_2 \xi^2 + \cdots + \alpha_{p-1} \xi^{p-1}) \\ 
+ &+ \cdots \, ,
 \end{align*}
-and so using the summation formula for geometric series we have
-\begin{equation*}
-G(\xi) = \frac{1}{1- \xi^p} (\alpha_0 + \alpha_1 \xi + \alpha_2 \xi^2 + \cdots + \alpha_{p-1} \xi^{p-1}).
-\end{equation*}
+and using the summation formula for geometric series gives us our desired result.
 \end{proof}
 
 Using these two expressions for the generating function we can produce the following necessary condition for $n$. 
 \begin{proposition} 
 \label{must}
-If $n$ is such that $F$ produces a sequence of period $p$ then $n$ must be of the form
+If $F$ produces a sequence of period $p$ then $n$ must be of the form
 \begin{equation*}
 n= 2 \cos(2 \pi l/p), 
 \end{equation*}
-for some $l \in \{0,1,2, \ldots, p-1\}$. 
+for some $l \in \{1,2, \ldots, p-1\}$. 
 \end{proposition}
 \begin{proof}
-If we equate the two different expressions for $G(\xi)$ we have 
+Both expressions for $G(\xi)$ are valid and so we can equate them 
 \begin{equation*}
 \frac{ 1 - n\xi}{1 - n \xi + \xi^2} = \frac{1}{1- \xi^p} (\alpha_0 + \alpha_1 \xi + \alpha_2 \xi^2 + \cdots + \alpha_{p-1} \xi^{p-1}).
 \end{equation*}
@@ -477,26 +472,27 @@ If we equate the two different expressions for $G(\xi)$ we have
 Note that in order to have equality of rational functions, the zeroes of the functions on both sides must be the same. 
 The only zero on the left hand side is $\xi = 1/n$, (note that it is not a zero of the denominator). The numerator of the left hand side has $p-1$ zeroes in the complex plane, while the denominator has exactly $p$ zeroes. In fact we know that the zeroes of $1 - \xi^p$ are $\xi = e^{2 \pi i k/p}$ for $k=0,1,2, \ldots, p-1$. Therefore $p-2$ of the zeroes of the numerator polynomial must be $p$th roots of unity, while the last root must be $\xi = 1/n$. 
 
-Note also that the locations of discontinuities for both functions must be the same. Therefore we must have that the zeroes of $1-n\xi + \xi^2$ are the same as those zeroes of the denominator of the left hand side which were not canceled out. Thus for some $l$ and $m$, we must have 
+Note also that the locations of discontinuities for both functions must be the same. Therefore the zeroes of $1-n\xi + \xi^2$ must be the same as those zeroes of the denominator of the right hand side which were not canceled out. Thus for some $s$ and $t$, we must have 
 \begin{align*}
-(\xi - e^{2 \pi i l/p})(\xi - e^{2 \pi i m/p}) = 1 - n \xi + \xi^2,
+(\xi - e^{2 \pi i s/p})(\xi - e^{2 \pi i t/p}) = 1 - n \xi + \xi^2,
 \end{align*}
-or 
+or written another way
 \begin{align*}
-n = e^{2 \pi i l/p} + e^{2 \pi i m/p} \\
-1 = e^{2 \pi i (l+m)/p}.
+n = e^{2 \pi i s/p} + e^{2 \pi i t/p} \\
+1 = e^{2 \pi i (s+t)/p}.
 \end{align*}
-So $n$ must be the sum of some $p$th roots of unity, and in fact these roots of unity must be conjugates of one another, so $n$ is always real. Therefore  
+So $n$ must be the sum of two distinct $p$th roots of unity, and in fact these roots of unity must be conjugates of one another, so $n$ is always real. Therefore  
 \begin{equation*}
 n= 2 \cos(2 \pi l/p), 
 \end{equation*}
-for some $l \in \{0, 1,2, \ldots, p-1\}$. 
+for some $l \in \{1,2, \ldots, p-1\}$. 
 \end{proof}
-Note that by Proposition \ref{period6} we know that $F(x,y)=y/x$ has period 6, and since a function $F$ can only have one period for $p \neq 6$, $l$ cannot equal 0. 
 
 We conclude this section with some conjectures based on numerical evidence. 
 
-\begin{conjecture} For all $p$ there exists $n$ such that $F(x,y)=y^n/x$ has period $p$. 
+\begin{conjecture}
+\label{exists}
+ For all $p$ there exists $n$ such that $F(x,y)=y^n/x$ has period $p$. 
 \end{conjecture} 
 This conjecture is equivalent to saying that we can always find a value of $n$ that satisfies the three equations 
 \begin{align*}
@@ -504,7 +500,7 @@ This conjecture is equivalent to saying that we can always find a value of $n$ t
 \beta_p &=0\\
 \beta_{p+1} &=1.
 \end{align*}
-We have verified that solutions exist for values of $p$ up to 1000. Note that this conjecture along with Proposition \ref{must} are not equivalent to Conjecture \ref{cos}, which for ease of reading we restate here. 
+We have been able to verify that solutions exist for values of $p$ up to 1000. Note that this conjecture along with Proposition \ref{must} are not equivalent to Conjecture \ref{cos}, which for ease of reading we restate here. 
 \begin{conjecture}
 Given any integer $p>2$ let 
 \begin{equation*}
@@ -512,6 +508,15 @@ n = 2 \cos(2 \pi l/p),
 \end{equation*}
 with $l \in \{1,2,3, \ldots, p-1 \}$. Then $F(x,y) = y^n/x$ is periodic with period $p$.
 \end{conjecture}
-Conjecture \ref{cos} states that for \emph{any} value of $l$ the $n$ produced has the desired period, while Conjecture 
+Conjecture \ref{cos} states that for \emph{any} value of $l$ the $n$ produced has the desired period, while Conjecture \ref{exists} along with Proposition \ref{must} states that one such $l$ exists such that the $n$ produced has the desired period. It is more computationally intensive to check if certain values of $n$ produce periodic functions and so we were able to verify this conjecture only for $p$ up to 100.
+
+\section{Haikus} 
+Its periodic  \\
+What came before is what's next \\
+Its periodic \\ \\
+No matter the $p$ \\
+You can find a few good $n$\\
+That is what we hope \\
+
 
 \end{document}
