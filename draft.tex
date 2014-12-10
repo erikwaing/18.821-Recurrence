@@ -20,6 +20,7 @@
 \newtheorem{proposition}{Proposition}
 \newtheorem{definition}{Definition}
 \newtheorem{lemma}{Lemma}
+\newtheorem{conjecture}{Conjecture}
 
 \begin{document}
 \maketitle
@@ -300,6 +301,7 @@ Given how complex the expression for $a_3$ was, we did not consider the case of 
 \emph{Written by Fermi Ma and Perry Kleinhenz, edited by Erik Waingarten}\\
 
 In this section we consider the case where $F(x,y) = f(y)/x$ with $f(y) = y^n$, where $n$ is any complex number, not just an integer. The question we would like to answer is given an integer $p$ can we always come up with an $n$ such that $F$ has period $p$. We first explore some basic properties of the sequences such functions produce and compute an explicit example. We then give an explicit formula for the $k$th term in the sequence. Finally using a generating function we are able to produce a necessary condition on $n$, in order for $F$ to produce a sequence with period $p$. Using Mathematica we were able to verify numerically for values of $p$ up to 1000 that this necessary condition is also sufficient. Because of this we conjecture 
+
 \begin{conjecture}
 \label{cos}
 Given any integer $p>2$ let 
@@ -365,11 +367,11 @@ We note further that there is a relation between different terms of the two sequ
 \end{equation*}
 \end{lemma}
 \begin{proof}
-We will show this using induction. As a base case note that $\alpha_1 = 0 = \beta_0$, and $\alpha_2 = -n = \beta_1$. Now if we assume this holds for $k \leq m$ and would like to show it holds for $k = m+1$ consider $\alpha_{m+1}$ which by the recurrence relation is
+We will show this using induction. As a base case note that $\alpha_1 = 0 = \beta_0$, and $\alpha_2 = -n = \beta_1$. Now we assume this holds for $k \leq m$. To show it holds for $k = m+1$, consider
 \begin{equation*}
 \alpha_{m+1} = n \alpha_{m} - \alpha_{m-1}.
 \end{equation*}
-Well $\alpha_m = -\beta_{m-1}$ and $\alpha_{m-1} = - \beta_{m-2}$ by the induction hypothesis and so 
+We have $\alpha_m = -\beta_{m-1}$ and $\alpha_{m-1} = - \beta_{m-2}$ by the induction hypothesis and so 
 \begin{equation*}
 \alpha_{m+1} = - n \beta_{m-1} + \beta_{m-2} = -\beta_{m}.
 \end{equation*}
@@ -392,23 +394,26 @@ It is easy to check that this holds for $k = 1$ and $k = 2$.  If we plug the for
 we must have 
 \begin{align*}
 \sum_{i = 0}^{\lfloor (k-1)/2 \rfloor} (-1)^i\binom{k-1-i}{k-1-2i}n^{k-1-2i} = & n \sum_{i = 0}^{\lfloor (k-2)/2 \rfloor} (-1)^i\binom{k-2-i}{k-2-2i}n^{k-2-2i} \\
-& +\sum_{i = 0}^{\lfloor (k-3)/2 \rfloor} (-1)^i\binom{k-3-i}{k-3-2i}n^{k-3-2i}\\
+& +\sum_{i = 0}^{\lfloor (k-3)/2 \rfloor} (-1)^i\binom{k-3-i}{k-3-2i}n^{k-3-2i}.\\
 \end{align*}
-Checking this equation separately when $k$ is even or odd, as well as using combinatorial identities, shows that this expression for $\beta_k$ satisfies the recurrence relation. Because of this our formula is valid for $k \geq 1$.
+We omit the steps of explicitly checking the equation, but simple combinatorial identities show that both sides are equal. Thus, our formula is valid for $k \geq 1$.
 \end{proof}
 
-This expression for $\beta_k$, gives us an expression for $\alpha_k$ by Lemma \ref{ab}. In order to obtain a function $F$ with period $p$ we must solve the three equations
+This expression for $\beta_k$ gives us an expression for $\alpha_k$ by Lemma \ref{ab}. In order to obtain a function $F$ with period $p$ we must solve the three equations
 \begin{align*}
 \alpha_p &=1 \\
 \beta_p &=0\\ 
 \beta_{p+1} &= 1,
 \end{align*}
-plugging in the explicit values for $\alpha_p, \beta_p$ and $\beta_{p+1}$. We were not able to show that these equations always produce a solution for $n$.
+for $n$. We were not able to show that these equations always produce a solution, despite the fact that we know the explicit form of these equations for any $p$.
 \\ 
 
 
-Now using a generating function approach, given a desired period $p$, we give a necessary condition for $n$. 
-First we produce the generating function for $\alpha_k$. A generating function of an infinite sequence is a formal power series with coefficients equal to the terms of the sequence.  So if $G(\xi)$ is the generating function of $\alpha_k$, then 
+Now we switch our focus and use a generating function approach to this problem. We show a necessary condition for $n$ so that $y^n/x$ produces a sequence with a given $p$.
+
+First we produce the generating function for $\alpha_k$. Note that we shift from looking at $\beta_k$ to looking at $\alpha_k$ simply to make the generating function formulation simpler. However, we know from Lemma~\ref{ab} that these two sequences are almost interchangeable.
+
+A generating function of an infinite sequence is a formal power series with coefficients equal to the terms of the sequence.  So if $G(\xi)$ is the generating function of $\alpha_k$, then 
 \begin{equation*}
 G(\xi) = \sum_{k=0}^{\infty} \alpha_k \xi^k,
 \end{equation*}
@@ -511,12 +516,34 @@ with $l \in \{1,2,3, \ldots, p-1 \}$. Then $F(x,y) = y^n/x$ is periodic with per
 Conjecture \ref{cos} states that for \emph{any} value of $l$ the $n$ produced has the desired period, while Conjecture \ref{exists} along with Proposition \ref{must} states that one such $l$ exists such that the $n$ produced has the desired period. It is more computationally intensive to check if certain values of $n$ produce periodic functions and so we were able to verify this conjecture only for $p$ up to 100.
 
 \section{Haikus} 
-Its periodic  \\
+\emph{Perry's Haikus}\\
+
+\noindent Its periodic  \\
 What came before is what's next \\
-Its periodic \\ \\
-No matter the $p$ \\
+Its periodic \\
+
+\noindent No matter the $p$ \\
 You can find a few good $n$\\
 That is what we hope \\
+
+\noindent\emph{Fermi's Haikus}\\
+
+\noindent Try small cases first.\\
+Two, three, and four seem simple.\\
+Five and six less so.\\
+
+\noindent Restrict attention\\
+To the $y$ to the $n$ case.\\
+Now it always works!\\ 
+
+\noindent We can prove this claim.\\
+Just write the equations down.\\
+Shoot, how does this work?\\
+
+
+
+
+
 
 
 \end{document}
